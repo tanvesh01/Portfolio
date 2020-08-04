@@ -1,8 +1,9 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { motion } from "framer-motion";
 import Projects from "../Containers/Projects/Projects";
+import Intro from "../Containers/Intro/Intro";
 import Header from "../Components/Header/Header";
+import OnScroll from "../Components/OnScroll";
 const head = {
     initial: {
         opacity: 0,
@@ -20,11 +21,6 @@ const head = {
 };
 
 export default class Home extends React.Component {
-    // componentDidMount() {
-    //     if (window !== undefined) {
-
-    //     }
-    // }
     state = {
         index: "head",
     };
@@ -40,7 +36,9 @@ export default class Home extends React.Component {
         return (
             <div style={{ height: "1000px", padding: 0, margin: 0 }}>
                 {nav}
+                <Intro />
                 <Projects />
+                <OnScroll />
             </div>
         );
     }
@@ -48,10 +46,5 @@ export default class Home extends React.Component {
 
 {
     /* <a onClick={() => this.handleShow("contact")}>2 on that</a>
-                <div ref={"head"} style={{ height: "400px" }}>
-                    1.
-                </div>
-                <div ref={"contact"} style={{ height: "400px" }}>
-                    2.
-                </div> */
+     */
 }

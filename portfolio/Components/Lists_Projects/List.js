@@ -5,14 +5,20 @@ import { motion } from "framer-motion";
 
 function Card(props) {
     return (
-        <li className={`card ${props.theme}`}>
+        <li className={`card-${props.id}`}>
             <div className="card-content-container">
                 <motion.div className="card-content" layoutId={`card-container-${props.id}`}>
                     <motion.div
                         className="card-image-container"
                         layoutId={`card-image-container-${props.id}`}
                     >
-                        {/* <img className="card-image" src={`images/${id}.jpg`} alt="" /> */}
+                        <img
+                            style={{ objectFit: "cover" }}
+                            className="card-image"
+                            width="41rem"
+                            src={`/images/${props.id}.jpg`}
+                            alt=""
+                        />
                     </motion.div>
                     <motion.div
                         className="title-container"

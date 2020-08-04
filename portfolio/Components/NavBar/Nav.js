@@ -12,18 +12,26 @@ const useStyles = makeStyles({
         justifyContent: "space-between",
         alignItems: "center",
         width: "100%",
+        height: "4rem",
+        fontFamily: "'Haas'",
+        top: 0,
+        fontSize: "16px",
+        zIndex: 1,
         paddingLeft: "30px",
         paddingRight: "10px",
         transition: "background-color 0.6s",
     },
     tag: {
         display: "inline-block",
-        padding: "10px 15px",
         textDecoration: "none",
         color: "black",
+        padding: "12px",
         "&:hover": {
             color: "#00ff00",
         },
+    },
+    brand: {
+        fontWeight: 800,
     },
 });
 
@@ -34,24 +42,23 @@ const Nav = (props) => {
             className={classes.nav}
             style={{
                 backgroundColor: props.bgColor === "top" ? "transparent" : "white",
-                zIndex: 100,
             }}
         >
             <a className={classes.brand}>Tanvesh</a>
             <ul className={classes.navLinks}>
                 <li className={classes.navItem}>
                     <a className={classes.tag} href="#">
-                        Curriculum
+                        Work
                     </a>
                 </li>
                 <li className={classes.navItem}>
                     <a className={classes.tag} href="#">
-                        Forum
+                        About
                     </a>
                 </li>
                 <li className={classes.navItem}>
                     <a className={classes.tag} href="#">
-                        News
+                        Contact
                     </a>
                 </li>
             </ul>
