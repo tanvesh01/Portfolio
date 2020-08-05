@@ -7,7 +7,11 @@ function Card(props) {
     return (
         <li className={`card-${props.id}`}>
             <div className="card-content-container">
-                <motion.div className="card-content" layoutId={`card-container-${props.id}`}>
+                <motion.div
+                    className="card-content"
+                    style={{ backgroundColor: `${props.color}` }}
+                    layoutId={`card-container-${props.id}`}
+                >
                     <motion.div
                         className="card-image-container"
                         layoutId={`card-image-container-${props.id}`}
@@ -16,13 +20,14 @@ function Card(props) {
                             style={{ objectFit: "cover" }}
                             className="card-image"
                             width="41rem"
-                            src={`/images/${props.id}.jpg`}
+                            src={`/${props.id}.jpg`}
                             alt=""
                         />
                     </motion.div>
                     <motion.div
                         className="title-container"
                         layoutId={`title-container-${props.id}`}
+                        style={{ color: `${props.textColor}` }}
                     >
                         <span className="category">{props.category}</span>
                         <h2>{props.title}</h2>
@@ -61,16 +66,15 @@ function List(props) {
                             <motion.div
                                 className="card-image-container"
                                 layoutId={`card-image-container-1`}
+                                style={{ textAlign: "left" }}
                             >
-                                <img
-                                    style={{ objectFit: "cover" }}
-                                    className="card-image"
-                                    width="41rem"
-                                    src={`/images/1.jpg`}
-                                    alt=""
-                                />
+                                <img src={`/1.jpg`} alt="" className="card-image" />
                             </motion.div>
-                            <motion.div className="title-container" layoutId={`title-container-1`}>
+                            <motion.div
+                                className="title-container"
+                                style={{ color: "#e0fffe" }}
+                                layoutId={`title-container-1`}
+                            >
                                 <span className="category">Shopping</span>
                                 <h2>E-commerce</h2>
                             </motion.div>
@@ -86,6 +90,8 @@ function List(props) {
                             key={card.id}
                             changeId={props.changeId}
                             id={card.id}
+                            color={card.backgroundColor}
+                            textColor={card.textColor}
                             title={card.title}
                             category={card.category}
                             isSelected={card.id === props.selectedId}

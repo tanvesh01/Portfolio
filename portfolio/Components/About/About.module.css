@@ -1,0 +1,33 @@
+.root {
+    width: 100%;
+    height: 26rem;
+    text-align: left;
+    padding-left: 82px;
+    font-family: "Haas";
+}
+.text {
+    font-size: 50px;
+    line-height: 63px;
+    color: black;
+    margin-right: 25rem;
+    margin-top: 2rem;
+}
+.love {
+    font-weight: 100;
+    color: #00ff00;
+}
+
+@media only screen and (max-width: 600px) {
+    .root {
+        padding-left: 25px;
+    }
+    .text {
+        font-size: 7vw;
+        line-height: 9vw;
+        margin-right: 25px;
+    }
+}
+
+/* .about {
+    width: 100%;
+} */

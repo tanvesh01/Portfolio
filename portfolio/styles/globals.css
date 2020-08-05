@@ -28,11 +28,16 @@ a {
     src: url("/fonts/NeueHaasGroteskRegular.otf");
 }
 
+@font-face {
+    font-family: "Haasb";
+    src: url("/fonts/NeueHaasGroteskMedium");
+}
+
 @media only screen and (max-width: 600px) {
     body {
         background-position: -40px -230px;
         background-repeat: no-repeat;
         /* background-position-y: top -250px !important; */
-        background-image: url("/images/green.svg");
+        background-image: url("/green.svg");
     }
 }

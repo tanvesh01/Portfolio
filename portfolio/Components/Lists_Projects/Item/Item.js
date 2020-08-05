@@ -1,11 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { items } from "../../../data";
-// import "../../../public/Projects.css";
 
 function Item(props) {
     console.log(props.id);
-    const { category, title } = items.find((item) => item.id === props.id);
+    const { category, title, backgroundColor, textColor } = items.find(
+        (item) => item.id === props.id
+    );
 
     return (
         <>
@@ -25,18 +26,21 @@ function Item(props) {
                         className="card-image-container"
                         layoutId={`card-image-container-${props.id}`}
                     >
-                        <div style={{ backgroundColor: "beige" }} className="card-image" alt="" />
+                        <div style={{ backgroundColor: `${backgroundColor}`, textAlign: "left" }}>
+                            <img src={`/${props.id}.jpg`} className="card-image" alt="" />
+                        </div>
                     </motion.div>
                     <motion.div
                         className="title-container"
                         layoutId={`title-container-${props.id}`}
+                        style={{ color: `${textColor}` }}
                     >
                         <span className="category">{category}</span>
                         <h2>{title}</h2>
                     </motion.div>
-                    {/* <motion.div className="content-container" animate>
-                        <LoremIpsum p={6} avgWordsPerSentence={6} avgSentencesPerParagraph={4} />
-                    </motion.div> */}
+                    <motion.div className="content-container" animate>
+                        <p>saddsa dsadsa adsdaskjdsa jndfkjsfda jnsfdksdfa jknsdfankasdf</p>
+                    </motion.div>
                 </motion.div>
             </div>
         </>

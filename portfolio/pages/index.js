@@ -4,6 +4,7 @@ import Projects from "../Containers/Projects/Projects";
 import Intro from "../Containers/Intro/Intro";
 import Header from "../Components/Header/Header";
 import OnScroll from "../Components/OnScroll";
+import About from "../Components/About/About";
 const head = {
     initial: {
         opacity: 0,
@@ -38,7 +39,8 @@ export default class Home extends React.Component {
                 {nav}
                 <Intro />
                 <Projects />
-                <OnScroll />
+                {/* <OnScroll /> */}
+                <About />
             </div>
         );
     }

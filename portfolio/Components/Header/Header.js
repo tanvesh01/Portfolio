@@ -1,5 +1,5 @@
 import React from "react";
-import Nav from "../NavBar/Nav";
+import Nav from "./NavBar/Nav";
 
 export default class Header extends React.Component {
     constructor(props) {

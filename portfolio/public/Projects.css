@@ -14,9 +14,9 @@
 }
 
 .container {
-    max-width: 990px;
+    max-width: 1400px;
     flex: 1 1 100%;
-    padding: 45px 25px;
+    padding: 45px 0px;
 }
 
 h1 {
@@ -75,6 +75,7 @@ li {
     height: 100%;
     position: relative;
     display: block;
+    font-family: "Haas";
     pointer-events: none;
 }
 
@@ -114,13 +115,18 @@ li {
     bottom: 0;
 }
 
+.card-image {
+    width: 639px;
+    height: 426px;
+}
+
 .card-image-container {
     position: absolute;
     top: 0;
     left: 0;
     overflow: hidden;
-    height: 450px;
-    width: 91vw;
+    height: 426px;
+    width: 760px;
 }
 
 .open .card-image-container,
@@ -141,12 +147,10 @@ li {
 }
 
 h2 {
-    color: #fff;
     margin: 8px 0;
 }
 
 .category {
-    color: #fff;
     font-size: 14px;
     text-transform: uppercase;
 }
@@ -192,18 +196,19 @@ p {
     position: relative;
     padding: 25px;
     height: 460px;
-    max-width: 100%;
+    max-width: 49%;
 }
 .card-2 {
     flex: 1 1 5rem;
     position: relative;
     height: 460px;
-    padding-right: 1rem;
+    padding: 25px;
 }
 .card-3 {
     flex: 1 1 5rem;
     position: relative;
     height: 460px;
+    padding: 25px;
 }
 
 /* ============ */
@@ -232,17 +237,34 @@ p {
     .open .card-content {
         border-radius: 0;
     }
+    .card-1 {
+        padding: 25px 0;
+        max-width: 100%;
+    }
     .card-2 {
         flex: 1 1 50rem;
         padding-bottom: 1rem;
+        padding-left: 0;
+        padding-top: 0;
         padding-right: 0;
+    }
+    .card-3 {
+        padding-left: 0;
+        padding-top: 0;
+        padding-right: 0;
+        margin-bottom: 1rem;
     }
     .card:nth-child(4n + 1),
     .card:nth-child(4n + 4) {
         flex: 1 0 100%;
         max-width: 100%;
     }
-
+    .card-image {
+        width: 40rem;
+    }
+    .container {
+        padding: 0 25px;
+    }
     .card-content-container.open {
         padding: 0;
     }
