@@ -1,0 +1,40 @@
+.hi {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 22rem;
+    /* // border: 2px solid #00ff00; */
+    margin-top: 9rem;
+    font-family: Haas;
+}
+.heading {
+    font-size: 60px;
+    width: 52rem;
+    font-weight: 300;
+    z-index: 0;
+}
+.green {
+    height: 29rem;
+    position: absolute;
+    /* // opacity: 0.8; */
+    margin-left: -26%;
+    margin-top: -3rem;
+}
+@media only screen and (max-width: 600px) {
+    .green {
+        display: none;
+    }
+    .heading {
+        font-size: 11.5vw;
+        text-align: left;
+        line-height: 13vw;
+        margin-left: 2rem;
+    }
+    .hi {
+        width: 88%;
+        margin-top: 0;
+        height: 27rem;
+    }
+}
