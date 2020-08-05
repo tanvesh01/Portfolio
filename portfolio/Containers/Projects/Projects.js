@@ -21,6 +21,7 @@ class Projects extends Component {
     };
 
     render() {
+        console.log(this.state.selectedId);
         return (
             <div id="root">
                 <div className="container">

@@ -4,6 +4,7 @@ import { items } from "../../../data";
 // import "../../../public/Projects.css";
 
 function Item(props) {
+    console.log(props.id);
     const { category, title } = items.find((item) => item.id === props.id);
 
     return (
