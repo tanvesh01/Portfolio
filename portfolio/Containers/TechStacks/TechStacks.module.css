@@ -1,0 +1,58 @@
+.root {
+    width: 100%;
+    height: 41rem;
+    text-align: left;
+    padding-left: 82px;
+    padding-top: 8rem;
+    font-family: "Haas";
+    flex-wrap: wrap;
+    display: flex;
+    padding-bottom: 8rem;
+    /* border: 2px solid chartreuse; */
+    text-transform: uppercase;
+    background-color: #f8f8f8;
+}
+.stacks {
+    width: 80%;
+    /* border: 2px solid darkblue; */
+    display: flex;
+    margin-top: 3rem;
+    /* height: 20rem; */
+    justify-content: space-between;
+}
+.imgs {
+    /* margin-right: 2rem; */
+    width: 7rem;
+    height: 7rem;
+}
+.one {
+    width: 100%;
+    flex: 1;
+}
+.two {
+    font-family: "Londrina Outline", cursive;
+    font-weight: 900;
+    color: #0000006e;
+    flex: 1;
+}
+@media only screen and (max-width: 600px) {
+    .root {
+        padding-left: 25px;
+        padding-bottom: 6rem;
+        padding-top: 6rem;
+    }
+    .imgs {
+        width: 4rem;
+        height: 4rem;
+    }
+    .stacks {
+        width: 93%;
+    }
+    .one {
+        flex: inherit;
+    }
+    .two {
+        margin-top: 3rem;
+        font-size: 2.8rem;
+    }
+}

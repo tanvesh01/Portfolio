@@ -4,7 +4,9 @@ import Projects from "../Containers/Projects/Projects";
 import Intro from "../Containers/Intro/Intro";
 import Header from "../Components/Header/Header";
 import OnScroll from "../Components/OnScroll";
-import About from "../Components/About/About";
+import About from "../Containers/About/About";
+import TechStacks from "../Containers/TechStacks/TechStacks";
+import Info from "../Containers/Info/Info";
 const head = {
     initial: {
         opacity: 0,
@@ -41,6 +43,8 @@ export default class Home extends React.Component {
                 <Projects />
                 {/* <OnScroll /> */}
                 <About />
+                <TechStacks />
+                <Info />
             </div>
         );
     }

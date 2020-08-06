@@ -1,6 +1,5 @@
 .root {
     width: 100%;
-    height: 26rem;
     text-align: left;
     padding-left: 82px;
     font-family: "Haas";
@@ -20,6 +19,8 @@
 @media only screen and (max-width: 600px) {
     .root {
         padding-left: 25px;
+        padding-bottom: 6rem;
+        padding-top: 6rem;
     }
     .text {
         font-size: 7vw;

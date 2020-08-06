@@ -9,7 +9,7 @@ function About(props) {
                 Currently, on my second year of Computer Science Bachelor and learning new
                 technologies.{" "}
                 <span className={classes.love}>I build apps with beautiful UI/UX.</span> Doing what
-                I absolutely LOVE. Looking for internship opportunities.
+                I absolutely love. Looking for internship opportunities.
             </p>
         </div>
     );
