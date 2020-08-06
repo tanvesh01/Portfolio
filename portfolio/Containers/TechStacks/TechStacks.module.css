@@ -32,6 +32,7 @@
 .two {
     font-family: "Londrina Outline", cursive;
     font-weight: 900;
+    font-size: 6rem;
     color: #0000006e;
     flex: 1;
 }

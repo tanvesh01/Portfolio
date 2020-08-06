@@ -21,6 +21,10 @@ class MyDocument extends Document {
                         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"
                     /> */}
                     <link
+                        href="https://fonts.googleapis.com/css2?family=Londrina+Shadow&display=swap"
+                        rel="stylesheet"
+                    ></link>
+                    <link
                         href="https://fonts.googleapis.com/css2?family=Londrina+Outline&display=swap"
                         rel="stylesheet"
                     ></link>

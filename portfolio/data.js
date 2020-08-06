@@ -1,27 +1,24 @@
 export const items = [
     {
         id: "1",
-        category: "shopping",
-        title: "E-commerce",
-        pointOfInterest: 380,
+        category: "Shopping",
+        title: "Ecommerce",
         backgroundColor: "#02bd9e",
-        textColor: "#e0fffe",
+        textColor: "#eceadd",
     },
     {
         id: "2",
-        category: "How to",
-        title: "corona Tracker",
-        pointOfInterest: 120,
+        category: "Education",
+        title: "Academia",
         backgroundColor: "#f9f3d3",
-        textColor: "#18f92f",
+        textColor: "black",
     },
     {
         id: "3",
-        category: "Learning",
-        title: "academia",
-        pointOfInterest: 260,
+        category: "Medical",
+        title: "Corona Tracker",
         backgroundColor: "#fef8e0",
-        textColor: "#FF0018",
+        textColor: "#20563a",
     },
 ];
 

@@ -44,7 +44,7 @@ li {
 
 .card-list {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
     align-content: flex-start;
 }
 
@@ -153,6 +153,7 @@ h2 {
 .category {
     font-size: 14px;
     text-transform: uppercase;
+    font-weight: 900;
 }
 
 .overlay {
@@ -190,9 +191,25 @@ p {
     line-height: 28px;
 }
 /* ========== */
-
+.text {
+    font-size: 6rem;
+    font-family: "Londrina Outline", cursive;
+    font-weight: 900;
+}
+.inArrow {
+    margin-left: -4rem;
+    width: 4rem;
+}
+.curve {
+    flex: 1;
+    padding: 42px;
+}
+.arrow {
+    transform: rotate(-138deg);
+    width: 3rem;
+}
 .card-1 {
-    flex: 0 0 100%;
+    flex: 1;
     position: relative;
     padding: 25px;
     height: 460px;
@@ -240,6 +257,17 @@ p {
     .card-1 {
         padding: 25px 0;
         max-width: 100%;
+        flex: 1 1 50rem;
+    }
+    .curve {
+        padding: 0;
+    }
+    .inArrow {
+        margin-left: -2rem;
+        width: 3rem;
+    }
+    .text {
+        font-size: 3rem;
     }
     .card-2 {
         flex: 1 1 50rem;

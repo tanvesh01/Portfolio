@@ -82,6 +82,17 @@ function List(props) {
                     </div>
                     <a onClick={() => props.changeId("1")} className={`card-open-link`} />
                 </li>
+                <li className="curve">
+                    <div className="text">
+                        Some projects that I worked on
+                        <div style={{ fontFamily: "Haas", fontSize: "1rem", color: "#8c8c8c" }}>
+                            (Go ahead click on these!)
+                        </div>
+                    </div>
+                    <div className="arrow">
+                        <img src="/c2.svg" className="inArrow" />
+                    </div>
+                </li>
             </ul>
             <ul className="card-list">
                 {items.map((card) =>
