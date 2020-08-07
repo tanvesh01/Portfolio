@@ -1,4 +1,67 @@
 .root {
     width: 100%;
-    height: 6rem;
+    height: 30rem;
+    display: flex;
+    justify-content: center;
+}
+.inner {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 65%;
+    padding: 5rem;
+    /* border: 2px solid darkgreen; */
+}
+.edu {
+    width: 100%;
+    height: 100%;
+    font-family: "Haas";
+    flex: 1 1 5rem;
+}
+.contact {
+    width: 100%;
+    height: 100%;
+    font-family: "Haas";
+    flex: 1 1 5rem;
+}
+
+.grid {
+    margin-top: 2rem;
+    height: 7rem;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+.link {
+    font-weight: 900;
+    transition: all 0.3s ease-out;
+    background: #f1f1f1;
+    border-radius: 30px;
+    padding: 10px 15px;
+    margin-right: 10px;
+    font-size: 15px;
+    background-color: #f1f1f1;
+}
+
+.link:hover {
+    text-decoration: none;
+    color: #00d405;
+}
+
+.in {
+    flex: 1;
+}
+
+@media only screen and (max-width: 600px) {
+    .edu {
+        flex: 1 1 50rem;
+        height: 70%;
+    }
+    .inner {
+        padding: 5rem 0 0 0;
+    }
+    .grid {
+        height: 9rem;
+    }
 }

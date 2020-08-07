@@ -21,11 +21,18 @@
     display: inline-block;
     text-decoration: none;
     color: black;
+    transition: all 0.3s ease-out;
+    font-weight: 900;
     padding: 12px;
 }
-.tag :hover {
+.tag:hover {
     color: #00ff00;
 }
 .brand {
     font-weight: 800;
 }
+
+/* @media only screen and (max-width: 600px) {
+    .navLinks {
+    }
+} */

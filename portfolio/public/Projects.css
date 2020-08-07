@@ -292,6 +292,7 @@ p {
     }
     .container {
         padding: 0 25px;
+        margin-top: 8rem;
     }
     .card-content-container.open {
         padding: 0;
