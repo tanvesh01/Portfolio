@@ -3,7 +3,6 @@ import styles from "../styles/Home.module.css";
 import Projects from "../Containers/Projects/Projects";
 import Intro from "../Containers/Intro/Intro";
 import Header from "../Components/Header/Header";
-import OnScroll from "../Components/OnScroll";
 import About from "../Containers/About/About";
 import TechStacks from "../Containers/TechStacks/TechStacks";
 import Info from "../Containers/Info/Info";
@@ -27,24 +26,30 @@ export default class Home extends React.Component {
     state = {
         index: "head",
     };
-    handleShow(i) {
+    handleShow = (i) => {
         this.setState({ index: i });
         this.refs[i].scrollIntoView({ block: "end", behavior: "smooth" });
-    }
+    };
     render() {
         let nav = null;
         if (typeof window !== "undefined") {
-            nav = <Header />;
+            nav = <Header handleShow={this.handleShow} />;
         }
         return (
             <div style={{ height: "1000px", padding: 0, margin: 0 }}>
                 {nav}
                 <Intro />
-                <Projects />
-                {/* <OnScroll /> */}
-                <About />
+                <div ref="work">
+                    <Projects />
+                </div>
+                <div ref="about">
+                    <About />
+                </div>
                 <TechStacks />
-                <Info />
+                <div ref="contact">
+                    <Info />
+                </div>
+                <div style={{ height: "2rem", width: "100%" }}></div>
             </div>
         );
     }

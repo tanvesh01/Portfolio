@@ -20,17 +20,13 @@ const OnScroll = (props) => {
     const [ref, inView] = useInView({ triggerOnce: true });
     console.log(inView);
     return (
-        <>
-            <div style={{ height: "400px" }}>1.</div>
-
-            <div ref={ref} style={{ height: "400px", color: "black" }}>
-                {inView ? (
-                    <motion.h1 initial="hidden" animate="visible" variants={scroll}>
-                        Experience!!! == {inView}
-                    </motion.h1>
-                ) : null}
-            </div>
-        </>
+        <div ref={ref}>
+            {inView ? (
+                <motion.div initial="hidden" animate="visible" variants={scroll}>
+                    {props.children}
+                </motion.div>
+            ) : null}
+        </div>
     );
 };
 

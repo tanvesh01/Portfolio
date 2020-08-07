@@ -1,6 +1,9 @@
 .navLinks {
     list-style: none;
     display: flex;
+    justify-content: space-between;
+    width: 20rem;
+    margin-right: 3rem;
 }
 .nav {
     position: fixed;
@@ -24,15 +27,22 @@
     transition: all 0.3s ease-out;
     font-weight: 900;
     padding: 12px;
+    cursor: pointer;
 }
 .tag:hover {
     color: #00ff00;
 }
 .brand {
     font-weight: 800;
+    margin-left: 3rem;
 }
 
-/* @media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
     .navLinks {
+        margin-right: 0;
+        width: 14rem;
     }
-} */
+    .brand {
+        margin-left: 0;
+    }
+}
