@@ -4,7 +4,7 @@ import { items } from "../../../data";
 
 function Item(props) {
     console.log(props.id);
-    const { category, title, backgroundColor, textColor } = items.find(
+    const { category, title, backgroundColor, textColor, desc } = items.find(
         (item) => item.id === props.id
     );
 
@@ -39,7 +39,7 @@ function Item(props) {
                         <h2>{title}</h2>
                     </motion.div>
                     <motion.div className="content-container" animate>
-                        <p>saddsa dsadsa adsdaskjdsa jndfkjsfda jnsfdksdfa jknsdfankasdf</p>
+                        <div className="desc">{desc}</div>
                     </motion.div>
                 </motion.div>
             </div>

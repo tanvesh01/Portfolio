@@ -50,7 +50,11 @@ function Card(props) {
                     </motion.div>
                 </motion.div>
             </div>
-            <a onClick={() => props.changeId(props.id)} className={`card-open-link`} />
+            <a onClick={() => props.changeId(props.id)} className={`card-open-link`}>
+                <a className="card-open-button" href={props.url} target="_blank">
+                    Visit
+                </a>
+            </a>
         </li>
     );
 }
@@ -104,7 +108,15 @@ function List(props) {
                                     </motion.div>
                                 </motion.div>
                             </div>
-                            <a onClick={() => props.changeId("1")} className={`card-open-link`} />
+                            <a onClick={() => props.changeId("1")} className={`card-open-link`}>
+                                <a
+                                    className="card-open-button"
+                                    href="https://twitter.com/Sarve___tanvesh/status/1289558862484267009?s=20"
+                                    target="_blank"
+                                >
+                                    Visit
+                                </a>
+                            </a>
                         </li>
                         <li className="curve">
                             <div className="text">
@@ -133,6 +145,7 @@ function List(props) {
                         {items.map((card) =>
                             card.id !== "1" ? (
                                 <Card
+                                    url={card.url}
                                     key={card.id}
                                     changeId={props.changeId}
                                     id={card.id}

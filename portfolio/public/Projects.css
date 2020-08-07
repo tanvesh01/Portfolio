@@ -106,13 +106,29 @@ li {
     overflow: hidden;
     pointer-events: none;
 }
-
+.card-open-button {
+    font-weight: 900;
+    text-align: center;
+    width: 5rem;
+    transition: all 0.3s ease-out;
+    background: #f1f1f1;
+    border-radius: 30px;
+    padding: 10px 15px;
+    margin-right: 10px;
+    font-size: 15px;
+    background-color: #f1f1f1;
+    margin: 3rem;
+    font-family: "Haas";
+    cursor: pointer;
+}
 .card-open-link {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    display: flex;
+    align-items: flex-end;
 }
 
 .card-image {
@@ -228,6 +244,12 @@ p {
     padding: 25px;
 }
 
+.desc {
+    color: white;
+    font-size: 21px;
+    line-height: 36px;
+}
+
 /* ============ */
 
 @media only screen and (max-width: 800px) {
@@ -296,5 +318,8 @@ p {
     }
     .card-content-container.open {
         padding: 0;
+    }
+    .card-open-button {
+        margin: 0 0 2.8rem 1.4rem;
     }
 }
