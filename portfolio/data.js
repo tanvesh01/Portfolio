@@ -6,8 +6,8 @@ export const items = [
         backgroundColor: "#02bd9e",
         textColor: "#eceadd",
         desc:
-            "Made web app with React, Redux,Nodejs, MongoDB ,jwt for auth and Framer motion. This was made to practice my skills on react and javascript in general. It is not deployed yet but you can check it out on my twitter profile.",
-        url: "https://twitter.com/Sarve___tanvesh/status/1289558862484267009?s=20",
+            "Made web app with React, Redux,Nodejs, MongoDB ,jwt for auth and Framer motion. This was made to practice my skills on react and javascript in general. It is deployed with the help of Heroku but you can also check it out on my twitter profile.",
+        url: "https://rb.gy/vxphsb",
     },
     {
         id: "2",
