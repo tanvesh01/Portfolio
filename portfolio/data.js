@@ -30,5 +30,5 @@ export const items = [
         url: "https://corona-tracker-app-35d8b.web.app/",
     },
 ];
-
+//https://tanvesh.vercel.app/
 export const openSpring = { type: "spring", stiffness: 200, damping: 30 };

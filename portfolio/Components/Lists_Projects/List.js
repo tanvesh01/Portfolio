@@ -111,7 +111,7 @@ function List(props) {
                             <a onClick={() => props.changeId("1")} className={`card-open-link`}>
                                 <a
                                     className="card-open-button"
-                                    href="https://twitter.com/Sarve___tanvesh/status/1289558862484267009?s=20"
+                                    href="https://rb.gy/vxphsb"
                                     target="_blank"
                                 >
                                     Visit
