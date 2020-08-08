@@ -16,7 +16,7 @@ export const items = [
         backgroundColor: "#f9f3d3",
         textColor: "black",
         desc:
-            "Made a web app with Nodejs, MongoDB, and HTML/CSS, for people to track which courses they are following and discover more courses. The whole point of this project was to help my college mates to find great courses on devlopment",
+            "Made a web app with Nodejs, MongoDB, and HTML/CSS, for people to track which courses they are following and discover more courses. The whole point of this project was to help my college mates to find great courses on development",
         url: "https://thawing-journey-14369.herokuapp.com/",
     },
     {
