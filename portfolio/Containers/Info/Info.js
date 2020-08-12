@@ -25,7 +25,11 @@ function Info(props) {
         { label: "LinkedIn", url: "https://www.linkedin.com/in/tanvesh01/" },
         { label: "Twitter", url: "https://twitter.com/Sarve___tanvesh" },
         { label: "@mail", url: "mailto:sarvetanvesh01@gmail.com" },
-        { label: "Resume", url: "#" },
+        {
+            label: "Resume",
+            url:
+                "https://drive.google.com/file/d/1WMTUFCsBq-9LjWjIioSYlOhQLkuFx4l_/view?usp=sharing",
+        },
     ];
     const [ref, inView] = useInView({ triggerOnce: true });
     return (

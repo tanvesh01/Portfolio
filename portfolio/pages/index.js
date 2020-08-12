@@ -1,5 +1,4 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
 import Projects from "../Containers/Projects/Projects";
 import Intro from "../Containers/Intro/Intro";
 import Header from "../Components/Header/Header";
@@ -37,6 +36,10 @@ export default class Home extends React.Component {
         }
         return (
             <div style={{ height: "1000px", padding: 0, margin: 0 }}>
+                <Head>
+                    <link rel="shortcut icon" href="/green.svg" />
+                    <title>Tanvesh</title>
+                </Head>
                 {nav}
                 <Intro />
                 <div ref="work">
