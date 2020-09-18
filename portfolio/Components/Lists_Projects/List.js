@@ -83,6 +83,59 @@ function List(props) {
             {inView ? (
                 <>
                     <motion.ul
+                        initial="hidden"
+                        animate="visible"
+                        variants={scroll}
+                        className="card-list"
+                    >
+                        {items.map((card) =>
+                            card.id !== "2" && card.id !== "3" ? (
+                                <Card
+                                    url={card.url}
+                                    key={card.id}
+                                    changeId={props.changeId}
+                                    id={card.id}
+                                    color={card.backgroundColor}
+                                    textColor={card.textColor}
+                                    title={card.title}
+                                    category={card.category}
+                                    isSelected={card.id === props.selectedId}
+                                />
+                            ) : null
+                        )}
+                    </motion.ul>
+                    <motion.ul
+                        initial="hidden"
+                        animate="visible"
+                        variants={scroll}
+                        className="card-list"
+                    >
+                        {items.map((card) =>
+                            card.id !== "1" && card.id !== "4" ? (
+                                <Card
+                                    url={card.url}
+                                    key={card.id}
+                                    changeId={props.changeId}
+                                    id={card.id}
+                                    color={card.backgroundColor}
+                                    textColor={card.textColor}
+                                    title={card.title}
+                                    category={card.category}
+                                    isSelected={card.id === props.selectedId}
+                                />
+                            ) : null
+                        )}
+                    </motion.ul>
+                </>
+            ) : null}
+        </div>
+    );
+}
+
+export default List;
+
+{
+    /* <motion.ul
                         className="card-list"
                         initial="hidden"
                         animate="visible"
@@ -135,33 +188,5 @@ function List(props) {
                                 <img src="/c2.svg" className="inArrow" />
                             </div>
                         </li>
-                    </motion.ul>
-                    <motion.ul
-                        initial="hidden"
-                        animate="visible"
-                        variants={scroll}
-                        className="card-list"
-                    >
-                        {items.map((card) =>
-                            card.id !== "1" ? (
-                                <Card
-                                    url={card.url}
-                                    key={card.id}
-                                    changeId={props.changeId}
-                                    id={card.id}
-                                    color={card.backgroundColor}
-                                    textColor={card.textColor}
-                                    title={card.title}
-                                    category={card.category}
-                                    isSelected={card.id === props.selectedId}
-                                />
-                            ) : null
-                        )}
-                    </motion.ul>
-                </>
-            ) : null}
-        </div>
-    );
+                    </motion.ul> */
 }
-
-export default List;

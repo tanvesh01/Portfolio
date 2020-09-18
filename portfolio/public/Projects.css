@@ -132,8 +132,8 @@ li {
 }
 
 .card-image {
-    width: 639px;
-    height: 426px;
+    width: 756px;
+    height: 430px;
 }
 
 .card-image-container {
@@ -229,7 +229,6 @@ p {
     position: relative;
     padding: 25px;
     height: 460px;
-    max-width: 49%;
 }
 .card-2 {
     flex: 1 1 5rem;
@@ -242,6 +241,13 @@ p {
     position: relative;
     height: 460px;
     padding: 25px;
+}
+
+.card-4 {
+    flex: 1;
+    position: relative;
+    padding: 25px;
+    height: 460px;
 }
 
 .desc {
@@ -277,9 +283,11 @@ p {
         border-radius: 0;
     }
     .card-1 {
-        padding: 25px 0;
-        max-width: 100%;
         flex: 1 1 50rem;
+        padding-bottom: 1rem;
+        padding-left: 0;
+        padding-top: 0;
+        padding-right: 0;
     }
     .curve {
         padding: 0;
@@ -303,6 +311,13 @@ p {
         padding-top: 0;
         padding-right: 0;
         margin-bottom: 1rem;
+    }
+    .card-4 {
+        padding-left: 0;
+        padding-top: 0;
+        padding-right: 0;
+        margin-bottom: 1rem;
+        height: 450px;
     }
     .card:nth-child(4n + 1),
     .card:nth-child(4n + 4) {

@@ -27,7 +27,12 @@ function Item(props) {
                         layoutId={`card-image-container-${props.id}`}
                     >
                         <div style={{ backgroundColor: `${backgroundColor}`, textAlign: "left" }}>
-                            <img src={`/${props.id}.jpg`} className="card-image" alt="" />
+                            <img
+                                style={{ objectFit: "cover" }}
+                                src={`/${props.id}.jpg`}
+                                className="card-image"
+                                alt=""
+                            />
                         </div>
                     </motion.div>
                     <motion.div
