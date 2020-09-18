@@ -19,26 +19,34 @@ class Projects extends Component {
             });
         }
     };
-
     render() {
         console.log(this.state.selectedId);
         return (
-            <div id="root">
-                <div className="container">
-                    <AnimateSharedLayout type="crossfade">
-                        <List selectedId={this.state.selectedId} changeId={this.changeIdHandler} />
-                        <AnimatePresence>
-                            {this.state.selectedId && (
-                                <Item
-                                    id={this.state.selectedId}
-                                    key="item"
-                                    changeId={this.changeIdHandler}
-                                />
-                            )}
-                        </AnimatePresence>
-                    </AnimateSharedLayout>
+            <>
+                <div className="projects">
+                    Find below somes valuable projects that I worked on!
+                    <p>Click on these Boxes for more info!</p>
                 </div>
-            </div>
+                <div id="root">
+                    <div className="container">
+                        <AnimateSharedLayout type="crossfade">
+                            <List
+                                selectedId={this.state.selectedId}
+                                changeId={this.changeIdHandler}
+                            />
+                            <AnimatePresence>
+                                {this.state.selectedId && (
+                                    <Item
+                                        id={this.state.selectedId}
+                                        key="item"
+                                        changeId={this.changeIdHandler}
+                                    />
+                                )}
+                            </AnimatePresence>
+                        </AnimateSharedLayout>
+                    </div>
+                </div>
+            </>
         );
     }
 }

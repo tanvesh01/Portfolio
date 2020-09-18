@@ -7,15 +7,15 @@
     padding-top: 8rem;
 }
 .text {
-    font-size: 50px;
-    line-height: 63px;
+    font-size: 39px;
+    line-height: 58px;
     color: black;
     margin-right: 25rem;
     margin-top: 2rem;
 }
 .love {
     font-weight: 100;
-    color: #00ff00;
+    color: #1de400;
 }
 
 @media only screen and (max-width: 600px) {

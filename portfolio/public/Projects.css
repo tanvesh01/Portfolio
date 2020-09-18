@@ -16,7 +16,7 @@
 .container {
     max-width: 1400px;
     flex: 1 1 100%;
-    padding: 83px 0px;
+    /* padding: 83px 0px; */
 }
 
 h1 {
@@ -256,6 +256,14 @@ p {
     font-size: 21px;
     line-height: 36px;
 }
+.projects {
+    width: 100%;
+    font-size: 1.3rem;
+    padding: 83px 0 24px 0;
+    /* padding-top: 83px; */
+    text-align: center;
+    font-family: "Haas";
+}
 
 /* ============ */
 
@@ -273,6 +281,17 @@ p {
 }
 
 @media only screen and (max-width: 600px) {
+    .projects {
+        font-size: 1.1rem;
+        padding: 144px 41px 24px 32px;
+    }
+    .content-container {
+        width: 100vw;
+    }
+    .desc {
+        font-size: 19px;
+        line-height: 25px;
+    }
     .card {
         flex: 1 0 100%;
         max-width: 100%;
@@ -330,7 +349,6 @@ p {
     }
     .container {
         padding: 0 25px;
-        margin-top: 8rem;
     }
     .card-content-container.open {
         padding: 0;
