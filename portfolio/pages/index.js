@@ -1,3 +1,4 @@
+import React from "react";
 import Head from "next/head";
 import Projects from "../Containers/Projects/Projects";
 import Intro from "../Containers/Intro/Intro";
@@ -5,6 +6,7 @@ import Header from "../Components/Header/Header";
 import About from "../Containers/About/About";
 import TechStacks from "../Containers/TechStacks/TechStacks";
 import Info from "../Containers/Info/Info";
+
 const head = {
     initial: {
         opacity: 0,
@@ -56,9 +58,4 @@ export default class Home extends React.Component {
             </div>
         );
     }
-}
-
-{
-    /* <a onClick={() => this.handleShow("contact")}>2 on that</a>
-     */
 }

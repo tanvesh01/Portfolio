@@ -18,7 +18,7 @@ const apps = {
 function MyApp({ Component, pageProps }) {
     return (
         <motion.div initial="initial" animate="visible" variants={apps}>
-            <Component {...pageProps} />;
+            <Component {...pageProps} />
         </motion.div>
     );
 }
