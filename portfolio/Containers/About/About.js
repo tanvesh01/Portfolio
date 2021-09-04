@@ -5,7 +5,7 @@ import { useInView } from "react-intersection-observer";
 
 const scroll = {
     hidden: {
-        y: "50%",
+        y: "20%",
         opacity: 0,
     },
     visible: {
@@ -27,13 +27,18 @@ function About(props) {
                 <motion.div initial="hidden" animate="visible" variants={scroll}>
                     <h4 style={{ fontSize: "15px" }}>ABOUT ME</h4>
                     <p className={classes.text}>
-                        {" "}
-                        Currently, on my second year of Computer Science Bachelor and learning new
-                        technologies.{" "}
+                        Currently a Frontend Engineer at{" "}
+                        <a href="https://www.wrky.ai/" target="_blank">
+                            {" "}
+                            Wrky
+                        </a>{" "}
+                        <br />
+                        On my third year of Computer Science Bachelor and learning new
+                        technologies. <br />
                         <span className={classes.love}>
                             I build apps with beautiful UI/UX.
                         </span>{" "}
-                        Doing what I absolutely love. Looking for internship opportunities.
+                        Doing what I absolutely love.
                     </p>{" "}
                 </motion.div>
             ) : null}

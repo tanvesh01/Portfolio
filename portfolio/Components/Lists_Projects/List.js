@@ -1,7 +1,7 @@
 import React from "react";
 import { items } from "../../data";
 // import "../../public/Projects.css";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 const scroll = {
@@ -51,9 +51,24 @@ function Card(props) {
                 </motion.div>
             </div>
             <a onClick={() => props.changeId(props.id)} className={`card-open-link`}>
-                <a className="card-open-button" href={props.url} target="_blank">
-                    Visit
-                </a>
+                <AnimatePresence>
+                    {!props.isSelected && (
+                        <motion.a
+                            initial={{ opacity: 1 }}
+                            animate={{ opacity: 1 }}
+                            transition={{
+                                delay: 0,
+                                default: { duration: 0.3 },
+                            }}
+                            exit={{ opacity: 1 }}
+                            className="card-open-button"
+                            href={props.url}
+                            target="_blank"
+                        >
+                            Visit
+                        </motion.a>
+                    )}
+                </AnimatePresence>
             </a>
         </li>
     );

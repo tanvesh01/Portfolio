@@ -24,7 +24,7 @@ class Projects extends Component {
         return (
             <>
                 <div className="projects">
-                    Find below somes valuable projects that I worked on!
+                    Find below some valuable projects that I worked on
                     <p>Click on these Boxes for more info!</p>
                 </div>
                 <div id="root">

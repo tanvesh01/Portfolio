@@ -5,7 +5,7 @@ import { useInView } from "react-intersection-observer";
 
 const scroll = {
     hidden: {
-        y: "20%",
+        y: 0,
         opacity: 0,
     },
     visible: {
@@ -40,7 +40,9 @@ function TechStacks(props) {
                             {a.map(function (e) {
                                 console.log(e);
                                 return (
-                                    <div style={{ textAlign: "center", color: "#989898" }}>
+                                    <div
+                                        style={{ textAlign: "center", color: "#989898" }}
+                                    >
                                         <img
                                             key={e}
                                             className={classes.imgs}
@@ -57,7 +59,9 @@ function TechStacks(props) {
                             {b.map(function (e) {
                                 console.log(e);
                                 return (
-                                    <div style={{ textAlign: "center", color: "#989898" }}>
+                                    <div
+                                        style={{ textAlign: "center", color: "#989898" }}
+                                    >
                                         <img
                                             key={e}
                                             className={classes.imgs}

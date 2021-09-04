@@ -27,8 +27,7 @@ function Info(props) {
         { label: "@mail", url: "mailto:sarvetanvesh01@gmail.com" },
         {
             label: "Resume",
-            url:
-                "https://drive.google.com/file/d/1WMTUFCsBq-9LjWjIioSYlOhQLkuFx4l_/view?usp=sharing",
+            url: "https://drive.google.com/file/d/1WMTUFCsBq-9LjWjIioSYlOhQLkuFx4l_/view?usp=sharing",
         },
     ];
     const [ref, inView] = useInView({ triggerOnce: true });
@@ -56,7 +55,11 @@ function Info(props) {
                             {c.map((e) => {
                                 return (
                                     <div className={classes.in}>
-                                        <a target="_blank" href={e.url} className={classes.link}>
+                                        <a
+                                            target="_blank"
+                                            href={e.url}
+                                            className={classes.link}
+                                        >
                                             {e.label}
                                         </a>
                                     </div>
@@ -71,5 +74,3 @@ function Info(props) {
 }
 
 export default Info;
-// 19-20, 20-21, 21-22, 22-23
-// cv, linkden, github, twitter,

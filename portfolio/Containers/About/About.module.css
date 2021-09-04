@@ -13,6 +13,17 @@
     margin-right: 25rem;
     margin-top: 2rem;
 }
+
+.text a {
+    color: #1de400;
+}
+
+.text a:hover {
+    transition: 0.3s all;
+    color: #1dca03;
+    text-decoration: underline;
+}
+
 .love {
     font-weight: 100;
     color: #1de400;
