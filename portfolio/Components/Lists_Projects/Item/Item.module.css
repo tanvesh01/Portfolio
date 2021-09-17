@@ -1,0 +1,66 @@
+.cardContainerOpen {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 25%;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+}
+
+.cardContentContainer {
+    position: relative;
+    border-radius: 20px;
+    background: rgb(43, 42, 42);
+    width: 100%;
+    height: fit-content;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.cardImageContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    height: 426px;
+    width: 760px;
+}
+
+.titleContainer {
+    padding: 15px;
+    font-family: "Haas";
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.content {
+    padding: 50% 35px 35px 35px;
+    max-width: 700px;
+    width: 90vw;
+}
+
+.desc {
+    font-family: "Haas";
+    color: #ffffffe6;
+    font-size: 19px;
+    /* letter-spacing: 0em; */
+    line-height: 32px;
+}
+
+.closeButton {
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border-radius: 50%;
+    backdrop-filter: saturate(180%) blur(20px);
+    background-color: rgba(255, 255, 255, 0.72);
+    cursor: pointer;
+}
+
+.closeButton:hover {
+    background-color: rgba(255, 255, 255, 0.87);
+}

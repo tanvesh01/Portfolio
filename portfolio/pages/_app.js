@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import "../public/Projects.css";
+import "../public/projectGallery.css";
 import { motion } from "framer-motion";
 
 const apps = {

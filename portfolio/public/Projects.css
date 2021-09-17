@@ -3,22 +3,6 @@
     text-align: center;
 }
 
-#root {
-    display: flex;
-    justify-content: center;
-}
-
-.screen {
-    width: 100%;
-    height: 100%;
-}
-
-.container {
-    max-width: 1400px;
-    flex: 1 1 100%;
-    /* padding: 83px 0px; */
-}
-
 h1 {
     font-weight: bold;
     margin: 6px 0 12px;
@@ -42,10 +26,28 @@ li {
     margin: 0;
 }
 
+#root {
+    display: flex;
+    justify-content: center;
+}
+
+.screen {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    max-width: 1400px;
+    flex: 1 1 100%;
+
+    /* padding: 83px 0px; */
+}
+
 .card-list {
     display: flex;
-    flex-wrap: wrap-reverse;
-    align-content: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: space-between;
 }
 
 .card {
@@ -53,21 +55,8 @@ li {
     padding: 25px;
     height: 460px;
     flex: 0 0 40%;
-    max-width: 40%;
-}
-
-.card:nth-child(4n + 1),
-.card:nth-child(4n + 4) {
-    flex: 0 0 60%;
-    max-width: 60%;
-}
-
-.card:nth-child(odd) {
-    padding-left: 0;
-}
-
-.card:nth-child(even) {
-    padding-right: 0;
+    max-width: 50%;
+    flex: 1 1 50%;
 }
 
 .card-content-container {
@@ -79,12 +68,12 @@ li {
     pointer-events: none;
 }
 
-.card-content-container.open {
+.open {
     top: 0;
     left: 0;
     right: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 100;
     overflow: hidden;
     padding: 40px 0;
 }
@@ -117,7 +106,7 @@ li {
     margin-right: 10px;
     font-size: 15px;
     background-color: #f1f1f1;
-    margin: 3rem;
+    margin: 1.5rem;
     font-family: "Haas";
     cursor: pointer;
 }
@@ -143,13 +132,18 @@ li {
     left: 0;
     overflow: hidden;
     height: 426px;
+
     width: 760px;
 }
 
+.open {
+    z-index: 200;
+}
+/* 
 .open .card-image-container,
 .open .title-container {
-    z-index: 1;
-}
+    z-index: 1000;
+} */
 
 .title-container {
     position: absolute;
@@ -174,18 +168,24 @@ h2 {
 }
 
 .overlay {
-    z-index: 1;
+    background: rgba(255, 255, 255, 0.548);
+    opacity: 0.2;
     position: fixed;
-    background: #0000004d;
-    will-change: opacity;
     top: 0;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 0;
     width: 100%;
+    z-index: 99;
 }
 
-.overlay a {
+.closeButton {
+    border-radius: 50%;
+    background-color: transparent;
+    padding: 4px;
+    cursor: pointer;
+}
+
+/* .overlay a {
     display: block;
     position: fixed;
     top: 0;
@@ -194,7 +194,7 @@ h2 {
     left: 50%;
 
     transform: translateX(-50%);
-}
+} */
 
 .content-container {
     padding: 460px 35px 35px 35px;
@@ -224,31 +224,6 @@ p {
 .arrow {
     transform: rotate(-138deg);
     width: 3rem;
-}
-.card-1 {
-    flex: 1;
-    position: relative;
-    padding: 25px;
-    height: 460px;
-}
-.card-2 {
-    flex: 1 1 5rem;
-    position: relative;
-    height: 460px;
-    padding: 25px;
-}
-.card-3 {
-    flex: 1 1 5rem;
-    position: relative;
-    height: 460px;
-    padding: 25px;
-}
-
-.card-4 {
-    flex: 1;
-    position: relative;
-    padding: 25px;
-    height: 460px;
 }
 
 .desc {
