@@ -5,9 +5,8 @@ import CloseIcon from "../../Icons/Close";
 import classes from "./Item.module.css";
 
 function Item({ id, key, changeId, isVisible }) {
-    const { category, title, backgroundColor, textColor, desc } = items.find(
-        (item) => item.id === id
-    );
+    const { category, title, backgroundColor, textColor, desc, closeButtonColor } =
+        items.find((item) => item.id === id);
 
     const closeModal = () => {
         console.log("clicked");
@@ -52,6 +51,7 @@ function Item({ id, key, changeId, isVisible }) {
                         <button
                             onClick={() => closeModal()}
                             className={classes.closeButton}
+                            style={{ backgroundColor: closeButtonColor }}
                         >
                             <CloseIcon color={backgroundColor} />
                         </button>

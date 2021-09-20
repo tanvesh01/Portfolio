@@ -17,13 +17,22 @@ const scroll = {
         },
     },
 };
-function Card({ url, key, changeId, id, color, textColor, title, category, isSelected }) {
+function Card({
+    url,
+    changeId,
+    id,
+    backgroundColor,
+    textColor,
+    title,
+    category,
+    isSelected,
+}) {
     return (
         <li className={`card-${id} card`}>
             <div className="card-content-container">
                 <motion.div
                     className="card-content"
-                    style={{ backgroundColor: `${color}` }}
+                    style={{ backgroundColor: `${backgroundColor}` }}
                     layoutId={`card-container-${id}`}
                 >
                     <motion.div
@@ -47,11 +56,11 @@ function Card({ url, key, changeId, id, color, textColor, title, category, isSel
                         <h2>{title}</h2>
                     </motion.div>
                     {!isSelected && (
-                        <a onClick={() => changeId(id)} className={`card-open-link`}>
+                        <div onClick={() => changeId(id)} className={`card-open-link`}>
                             <a className="card-open-button" href={url} target="_blank">
                                 Visit
                             </a>
-                        </a>
+                        </div>
                     )}
                 </motion.div>
             </div>
@@ -68,8 +77,9 @@ function List(props) {
                 // variants={scroll}
                 className="card-list"
             >
-                {items.map((card) => (
+                {items.map((card, index) => (
                     <Card
+                        key={index}
                         changeId={props.changeId}
                         isSelected={card.id === props.selectedId}
                         {...card}

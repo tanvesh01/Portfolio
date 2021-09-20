@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-// import "../../public/Projects.css";
 import List from "../../Components/Lists_Projects/List";
 import Item from "../../Components/Lists_Projects/Item/Item";
 import { AnimateSharedLayout, AnimatePresence, motion } from "framer-motion";
-// import ProjectGallery from "./ProjectGallery";
 class Projects extends Component {
     state = {
         selectedId: 0,
@@ -21,7 +19,6 @@ class Projects extends Component {
         }
     };
     render() {
-        console.log(this.state.selectedId);
         return (
             <>
                 <div className="projects">
@@ -69,7 +66,6 @@ class Projects extends Component {
                         </AnimateSharedLayout>
                     </div>
                 </div>
-                {/* <ProjectGallery /> */}
             </>
         );
     }
