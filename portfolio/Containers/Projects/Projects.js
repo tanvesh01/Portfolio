@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-// import "../../public/Projects.css";
 import List from "../../Components/Lists_Projects/List";
 import Item from "../../Components/Lists_Projects/Item/Item";
-import { AnimateSharedLayout, AnimatePresence } from "framer-motion";
+import { AnimateSharedLayout, AnimatePresence, motion } from "framer-motion";
 class Projects extends Component {
     state = {
         selectedId: 0,
@@ -20,11 +19,10 @@ class Projects extends Component {
         }
     };
     render() {
-        console.log(this.state.selectedId);
         return (
             <>
                 <div className="projects">
-                    Find below somes valuable projects that I worked on!
+                    Find below some valuable projects that I worked on
                     <p>Click on these Boxes for more info!</p>
                 </div>
                 <div id="root">
@@ -36,10 +34,32 @@ class Projects extends Component {
                             />
                             <AnimatePresence>
                                 {this.state.selectedId && (
+                                    <motion.div
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        exit={{
+                                            opacity: 0,
+                                            transition: { duration: 0.15 },
+                                        }}
+                                        transition={{ duration: 0.2, delay: 0.15 }}
+                                        style={{ pointerEvents: "auto" }}
+                                        className="overlay"
+                                        onClick={(e) => {
+                                            // this.changeIdHandler(this.state.selectedId)
+                                            console.log(
+                                                "clicked on everlay",
+                                                e.currentTarget
+                                            );
+                                        }}
+                                        // onClick={() => closeModal()}
+                                    ></motion.div>
+                                )}
+                                {this.state.selectedId && (
                                     <Item
                                         id={this.state.selectedId}
                                         key="item"
                                         changeId={this.changeIdHandler}
+                                        isVisible={this.state.selectedId != 0}
                                     />
                                 )}
                             </AnimatePresence>

@@ -1,50 +1,63 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { items } from "../../../data";
+import CloseIcon from "../../Icons/Close";
+import classes from "./Item.module.css";
 
-function Item(props) {
-    console.log(props.id);
-    const { category, title, backgroundColor, textColor, desc } = items.find(
-        (item) => item.id === props.id
-    );
+function Item({ id, key, changeId, isVisible }) {
+    const { category, title, backgroundColor, textColor, desc, closeButtonColor } =
+        items.find((item) => item.id === id);
+
+    const closeModal = () => {
+        console.log("clicked");
+
+        changeId(id);
+    };
 
     return (
         <>
-            <a onClick={() => props.changeId(props.id)}>
+            <div className={classes.cardContainerOpen}>
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0, transition: { duration: 0.15 } }}
-                    transition={{ duration: 0.2, delay: 0.15 }}
-                    style={{ pointerEvents: "auto" }}
-                    className="overlay"
-                ></motion.div>
-            </a>
-            <div className="card-content-container open">
-                <motion.div className="card-content" layoutId={`card-container-${props.id}`}>
+                    className={classes.cardContentContainer}
+                    layoutId={`card-container-${id}`}
+                >
                     <motion.div
-                        className="card-image-container"
-                        layoutId={`card-image-container-${props.id}`}
+                        className={classes.cardImageContainer}
+                        layoutId={`card-image-container-${id}`}
                     >
-                        <div style={{ backgroundColor: `${backgroundColor}`, textAlign: "left" }}>
+                        <div
+                            style={{
+                                backgroundColor: `${backgroundColor}`,
+                                textAlign: "left",
+                            }}
+                        >
                             <img
                                 style={{ objectFit: "cover" }}
-                                src={`/${props.id}.jpg`}
+                                src={`/${id}.jpg`}
                                 className="card-image"
                                 alt=""
                             />
                         </div>
                     </motion.div>
                     <motion.div
-                        className="title-container"
-                        layoutId={`title-container-${props.id}`}
+                        className={classes.titleContainer}
+                        layoutId={`title-container-${id}`}
                         style={{ color: `${textColor}` }}
                     >
-                        <span className="category">{category}</span>
-                        <h2>{title}</h2>
+                        <div>
+                            <span className="category">{category}</span>
+                            <h2>{title}</h2>
+                        </div>
+                        <button
+                            onClick={() => closeModal()}
+                            className={classes.closeButton}
+                            style={{ backgroundColor: closeButtonColor }}
+                        >
+                            <CloseIcon color={backgroundColor} />
+                        </button>
                     </motion.div>
-                    <motion.div className="content-container" animate>
-                        <div className="desc">{desc}</div>
+                    <motion.div className={classes.content} animate>
+                        <div className={classes.desc}>{desc}</div>
                     </motion.div>
                 </motion.div>
             </div>

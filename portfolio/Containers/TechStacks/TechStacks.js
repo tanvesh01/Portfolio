@@ -5,7 +5,7 @@ import { useInView } from "react-intersection-observer";
 
 const scroll = {
     hidden: {
-        y: "20%",
+        y: 0,
         opacity: 0,
     },
     visible: {
@@ -19,7 +19,7 @@ const scroll = {
     },
 };
 
-function TechStacks(props) {
+function TechStacks() {
     const a = ["react", "node", "js"];
     const b = ["redux", "mongo", "firebase"];
     const [ref, inView] = useInView({ triggerOnce: true });
@@ -28,7 +28,6 @@ function TechStacks(props) {
         <div ref={ref} className={classes.root}>
             {inView ? (
                 <>
-                    {" "}
                     <motion.div
                         className={classes.one}
                         initial="hidden"
@@ -38,9 +37,10 @@ function TechStacks(props) {
                         <h4 style={{ fontSize: "15px" }}> Stack that I work with </h4>
                         <div className={classes.stacks}>
                             {a.map(function (e) {
-                                console.log(e);
                                 return (
-                                    <div style={{ textAlign: "center", color: "#989898" }}>
+                                    <div
+                                        style={{ textAlign: "center", color: "#989898" }}
+                                    >
                                         <img
                                             key={e}
                                             className={classes.imgs}
@@ -55,9 +55,10 @@ function TechStacks(props) {
                         </div>
                         <div className={classes.stacks}>
                             {b.map(function (e) {
-                                console.log(e);
                                 return (
-                                    <div style={{ textAlign: "center", color: "#989898" }}>
+                                    <div
+                                        style={{ textAlign: "center", color: "#989898" }}
+                                    >
                                         <img
                                             key={e}
                                             className={classes.imgs}
