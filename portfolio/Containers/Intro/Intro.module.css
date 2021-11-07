@@ -14,6 +14,7 @@
     width: 52rem;
     font-weight: 300;
     z-index: 0;
+    color: var(--color-primary);
 }
 .green {
     height: 29rem;

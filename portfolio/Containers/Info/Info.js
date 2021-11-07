@@ -43,9 +43,7 @@ function Info(props) {
                     <div className={classes.edu}>
                         <h1 style={{ fontSize: "3.1rem", fontWeight: 100 }}>Education</h1>
 
-                        <p style={{ fontWeight: 900, color: "black", marginTop: "2rem" }}>
-                            2019 - 2023
-                        </p>
+                        <p style={{ fontWeight: 900, marginTop: "2rem" }}>2019 - 2023</p>
                         <p> Computer Science </p>
                         <p> Goverment Engineering College, Rewa </p>
                     </div>

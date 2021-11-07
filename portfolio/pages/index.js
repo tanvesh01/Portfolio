@@ -26,15 +26,32 @@ const head = {
 export default class Home extends React.Component {
     state = {
         index: "head",
+        isDarkTheme: false,
     };
     handleShow = (i) => {
         this.setState({ index: i });
         this.refs[i].scrollIntoView({ block: "end", behavior: "smooth" });
     };
+    handleDarkModeToggle = (event) => {
+        this.setState({ isDarkTheme: event.target.checked });
+        console.log(this.state.isDarkTheme);
+        if (this.state.isDarkTheme) {
+            document.documentElement.setAttribute("data-theme", "dark");
+        } else {
+            // and to remove, setting the "light" mode:
+            document.documentElement.removeAttribute("data-theme");
+        }
+    };
     render() {
         let nav = null;
         if (typeof window !== "undefined") {
-            nav = <Header handleShow={this.handleShow} />;
+            nav = (
+                <Header
+                    handleShow={this.handleShow}
+                    handleDarkModeToggle={this.handleDarkModeToggle}
+                    isDarkTheme={this.state.isDarkTheme}
+                />
+            );
         }
         return (
             <div style={{ height: "1000px", padding: 0, margin: 0 }}>

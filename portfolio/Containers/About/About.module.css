@@ -9,7 +9,7 @@
 .text {
     font-size: 39px;
     line-height: 58px;
-    color: black;
+    color: var(--color-primary);
     margin-right: 25rem;
     margin-top: 2rem;
 }

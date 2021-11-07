@@ -10,7 +10,7 @@ const apps = {
     visible: {
         opacity: 1,
         transition: {
-            duration: 1,
+            duration: 0.4,
             ease: "easeIn",
         },
     },

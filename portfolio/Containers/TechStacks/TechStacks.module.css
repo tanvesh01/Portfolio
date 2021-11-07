@@ -10,7 +10,7 @@
     padding-bottom: 8rem;
     /* border: 2px solid chartreuse; */
     text-transform: uppercase;
-    background-color: #f8f8f8;
+    background-color: var(--color-secondary-accent);
 }
 .stacks {
     width: 80%;
@@ -33,7 +33,7 @@
     font-family: "Londrina Outline", cursive;
     font-weight: 900;
     font-size: 6rem;
-    color: #0000006e;
+    color: var(--weird-big-chars);
     flex: 1;
 }
 @media only screen and (max-width: 600px) {

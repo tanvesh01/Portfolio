@@ -23,7 +23,7 @@
 .tag {
     display: inline-block;
     text-decoration: none;
-    color: black;
+    color: var(--color-primary);
     transition: all 0.3s ease-out;
     font-weight: 900;
     padding: 12px;

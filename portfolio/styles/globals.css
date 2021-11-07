@@ -2,8 +2,10 @@ html,
 body {
     padding: 0;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
-        Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+        Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-primary);
 }
 
 html {
@@ -40,4 +42,24 @@ a {
         /* background-position-y: top -250px !important; */
         background-image: url("/green.svg");
     }
+}
+
+:root {
+    --color-primary-accent: #5b34da;
+    --color-primary: #000;
+    --color-background: #fff;
+    --color-secondary-accent: #f8f8f8;
+    --weird-big-chars: #0000006e;
+}
+
+[data-theme="dark"] {
+    --color-primary-accent: #9d86e9;
+    --color-primary: #fff;
+    --color-background: #222;
+    --color-secondary-accent: #1e1e1e;
+    --weird-big-chars: #d3d3d36e;
+}
+
+[data-theme="batman"] {
+    --color-primary-accent: #ffff00;
 }

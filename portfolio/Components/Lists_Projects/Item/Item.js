@@ -4,13 +4,11 @@ import { items } from "../../../data";
 import CloseIcon from "../../Icons/Close";
 import classes from "./Item.module.css";
 
-function Item({ id, key, changeId, isVisible }) {
+function Item({ id, changeId }) {
     const { category, title, backgroundColor, textColor, desc, closeButtonColor } =
         items.find((item) => item.id === id);
 
     const closeModal = () => {
-        console.log("clicked");
-
         changeId(id);
     };
 

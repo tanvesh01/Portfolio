@@ -31,6 +31,13 @@ export default class Header extends React.Component {
     }
 
     render() {
-        return <Nav bgColor={this.state.status} handleShow={this.props.handleShow} />;
+        return (
+            <Nav
+                bgColor={this.state.status}
+                handleShow={this.props.handleShow}
+                handleToggle={this.props.handleDarkModeToggle}
+                isDarkTheme={this.props.isDarkTheme}
+            />
+        );
     }
 }
