@@ -27,7 +27,7 @@ function Info(props) {
         { label: "@mail", url: "mailto:sarvetanvesh01@gmail.com" },
         {
             label: "Resume",
-            url: "https://drive.google.com/file/d/1WMTUFCsBq-9LjWjIioSYlOhQLkuFx4l_/view?usp=sharing",
+            url: "https://serious-palm-014.notion.site/tanvesh-s-resume-866cbe37f9524232b6e75600f474891d",
         },
     ];
     const [ref, inView] = useInView({ triggerOnce: true });
