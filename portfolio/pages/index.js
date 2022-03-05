@@ -37,7 +37,7 @@ const GreenCircle = styled(motion.img, {
 const NonBlur = styled(motion.img, {
   position: "absolute",
   top: "5%",
-  left: "45%",
+  left: "50%",
   height: "15%",
   width: "auto",
   transform: "rotate(90deg)",
