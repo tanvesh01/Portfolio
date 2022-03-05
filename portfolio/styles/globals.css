@@ -30,10 +30,19 @@ a {
 
 @font-face {
   font-family: "Haasb";
-  src: url("/fonts/NeueHaasGroteskMedium");
+  src: url("/fonts/NeueHaasGroteskMedium.otf");
 }
 
-@media only screen and (max-width: 600px) {
+@keyframes slide-in {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
+
+@media only screen and (max-width: 640px) {
   body {
     background-position: -40px -230px;
     background-repeat: no-repeat;

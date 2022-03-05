@@ -1,6 +1,6 @@
 import { styled } from "@styles/stitches";
 import { HTMLMotionProps, motion } from "framer-motion";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 
 const staggerProps: HTMLMotionProps<"div"> = {
   initial: "hidden",
@@ -14,30 +14,12 @@ const staggerProps: HTMLMotionProps<"div"> = {
   },
 };
 
-export async function getServerSideProps(context) {
-  const UA = context.req.headers["user-agent"];
-  console.log(UA);
-  const isMobile = Boolean(
-    UA.match(
-      /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
-    )
-  );
+const Intro = () => {
+  let WavyHead = null;
 
-  return {
-    props: {
-      deviceType: isMobile ? "mobile" : "desktop",
-    },
-  };
-}
-
-const Intro = ({ deviceType }) => {
-  const imageRef = useRef();
-  useEffect(() => {
-    console.log();
-  }, []);
-  return (
-    <MainContainer {...staggerProps}>
-      <IntroHeading>
+  if (typeof window !== "undefined") {
+    WavyHead = (
+      <>
         {window.screen.width <= 640 && (
           <WavyHand
             style={{ display: "block" }}
@@ -53,7 +35,7 @@ const Intro = ({ deviceType }) => {
           />
         )}
         Hello, I’m Tanvesh
-        {deviceType !== "mobile" && (
+        {window.screen.width > 640 && (
           <WavyHand
             animate={{ rotate: [-10, 30], opacity: 1 }}
             transition={{
@@ -64,9 +46,16 @@ const Intro = ({ deviceType }) => {
             }}
             src="/hand_wave.png"
             alt="Hello"
+            mode="desktop"
           />
         )}
-      </IntroHeading>
+      </>
+    );
+  }
+
+  return (
+    <MainContainer {...staggerProps}>
+      <IntroHeading>{WavyHead}</IntroHeading>
       <IntroHeading>I am a Frontend Engineer</IntroHeading>
       <IntroHeading>
         Currently based in India. Doing what I absolutely love.
@@ -80,6 +69,14 @@ const WavyHand = styled(motion.img, {
   height: "4rem",
   marginBottom: "12px",
   transformOrigin: "75% 80%",
+  variants: {
+    mode: {
+      desktop: {
+        marginBottom: 0,
+        marginLeft: 20,
+      },
+    },
+  },
 });
 
 const StyledImage = styled("img", {
@@ -90,24 +87,27 @@ const StyledImage = styled("img", {
 const IntroHeading = styled("h1", {
   position: "relative",
   fontSize: `clamp(
-    3rem,
-    2vw + 1rem,
+    2.5rem,
+    8vw - 1.25rem,
     4rem
   )`,
-  margin: 0,
-
-  // lineHeight: "100%",
+  margin: "0 0 1rem",
+  zIndex: 90,
 });
 
 const MainContainer = styled(motion.div, {
+  position: "relative",
+
+  // Base Styles
   padding: "5rem 0 0 5rem",
-  minHeight: "80vh",
   fontFamily: "$heading",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
+  minHeight: "80vh",
   "@media(max-width: 640px)": {
-    padding: "5rem 0 0 2rem",
+    minHeight: "0",
+    padding: "8rem 0 0 2rem",
   },
   "@bp1": {
     // Styles for bp1

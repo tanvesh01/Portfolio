@@ -6,6 +6,56 @@ import Header from "../Components/Header/Header";
 import About from "../Containers/About/About";
 import TechStacks from "../Containers/TechStacks/TechStacks";
 import Info from "../Containers/Info/Info";
+import { keyframes, styled } from "@stitches/react";
+import { motion } from "framer-motion";
+
+// @keyframes move {
+//   0% {
+//     offset-distance: 0%;
+//   }
+//   100% {
+//     offset-distance: 100%;
+//   }
+// }
+
+const move = keyframes({
+  "0%": { transform: "rotate(0deg)" },
+  "100%": { transform: "rotate(360deg)" },
+});
+
+const GreenCircle = styled(motion.img, {
+  position: "absolute",
+  top: "-3%",
+  left: "40%",
+  width: "auto",
+  filter: "saturate(250%)",
+  height: "1000px",
+  animation: `${move} 10000ms infinite linear`,
+  // border: "1px solid",
+});
+
+const NonBlur = styled(motion.img, {
+  position: "absolute",
+  top: "5%",
+  left: "45%",
+  height: "15%",
+  width: "auto",
+  transform: "rotate(90deg)",
+  filter: "blur(40px) saturate(150%)",
+  // filter: " saturate(250%)",
+  mixBlendMode: "color-burn",
+  pointerEvents: "none",
+  objectFit: "cover",
+  borderRadius: "2rem",
+  // opacity: 0.5,
+});
+
+// mix blend mode
+
+const MainContainer = styled(motion.div, {
+  position: "relative",
+  overflow: "hidden",
+});
 
 export default class Home extends React.Component {
   state = {
@@ -21,7 +71,7 @@ export default class Home extends React.Component {
       nav = <Header handleShow={this.handleShow} />;
     }
     return (
-      <div style={{ height: "1000px", padding: 0, margin: 0 }}>
+      <MainContainer>
         <Head>
           <link rel="shortcut icon" href="/green.svg" />
           <title>Tanvesh</title>
@@ -39,7 +89,9 @@ export default class Home extends React.Component {
           <Info />
         </div>
         <div style={{ height: "2rem", width: "100%" }}></div>
-      </div>
+        <GreenCircle src="/blur.png" />
+        <NonBlur src="/non_blur.png" />
+      </MainContainer>
     );
   }
 }

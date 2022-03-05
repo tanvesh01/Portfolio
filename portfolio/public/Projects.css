@@ -1,143 +1,143 @@
 .App {
-    font-family: sans-serif;
-    text-align: center;
+  font-family: sans-serif;
+  text-align: center;
 }
 
 h1 {
-    font-weight: bold;
-    margin: 6px 0 12px;
+  /* font-weight: bold; */
+  margin: 6px 0 12px;
 }
 
 .date {
-    color: var(--secondary);
-    font-size: 14px;
-    text-transform: uppercase;
+  color: var(--secondary);
+  font-size: 14px;
+  text-transform: uppercase;
 }
 
 header {
-    border-bottom: 1px solid var(--divider);
-    position: relative;
+  border-bottom: 1px solid var(--divider);
+  position: relative;
 }
 
 ul,
 li {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 #root {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .screen {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .container {
-    max-width: 1400px;
-    flex: 1 1 100%;
+  max-width: 1400px;
+  flex: 1 1 100%;
 
-    /* padding: 83px 0px; */
+  /* padding: 83px 0px; */
 }
 
 .card-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: space-between;
 }
 
 .card {
-    position: relative;
-    padding: 25px;
-    height: 460px;
-    flex: 0 0 40%;
-    max-width: 50%;
-    flex: 1 1 50%;
+  position: relative;
+  padding: 25px;
+  height: 460px;
+  flex: 0 0 40%;
+  max-width: 50%;
+  flex: 1 1 50%;
 }
 
 .card-content-container {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    display: block;
-    font-family: "Haas";
-    pointer-events: none;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: block;
+  font-family: "Haas";
+  pointer-events: none;
 }
 
 .open {
-    top: 0;
-    left: 0;
-    right: 0;
-    position: fixed;
-    z-index: 100;
-    overflow: hidden;
-    padding: 40px 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  z-index: 100;
+  overflow: hidden;
+  padding: 40px 0;
 }
 
 .card-content {
-    pointer-events: auto;
-    position: relative;
-    border-radius: 20px;
-    background: rgb(43, 42, 42);
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
+  pointer-events: auto;
+  position: relative;
+  border-radius: 20px;
+  background: rgb(43, 42, 42);
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
 }
 
 .open .card-content {
-    /* height: auto; remove? */
-    max-width: 750px;
-    overflow: hidden;
-    pointer-events: none;
+  /* height: auto; remove? */
+  max-width: 750px;
+  overflow: hidden;
+  pointer-events: none;
 }
 .card-open-button {
-    font-weight: 900;
-    text-align: center;
-    width: 5rem;
-    transition: all 0.3s ease-out;
-    background: #f1f1f1;
-    border-radius: 30px;
-    padding: 10px 15px;
-    margin-right: 10px;
-    font-size: 15px;
-    background-color: #f1f1f1;
-    margin: 1.5rem;
-    font-family: "Haas";
-    cursor: pointer;
+  font-weight: 900;
+  text-align: center;
+  width: 5rem;
+  transition: all 0.3s ease-out;
+  background: #f1f1f1;
+  border-radius: 30px;
+  padding: 10px 15px;
+  margin-right: 10px;
+  font-size: 15px;
+  background-color: #f1f1f1;
+  margin: 1.5rem;
+  font-family: "Haas";
+  cursor: pointer;
 }
 .card-open-link {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    cursor: pointer;
-    align-items: flex-end;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  cursor: pointer;
+  align-items: flex-end;
 }
 
 .card-image {
-    width: 756px;
-    height: 430px;
+  width: 756px;
+  height: 430px;
 }
 
 .card-image-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    height: 426px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  height: 426px;
 
-    width: 760px;
+  width: 760px;
 }
 
 .open {
-    z-index: 200;
+  z-index: 200;
 }
 /* 
 .open .card-image-container,
@@ -146,43 +146,43 @@ li {
 } */
 
 .title-container {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    max-width: 300px;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  max-width: 300px;
 }
 
 .open .title-container {
-    top: 30px;
-    left: 30px;
+  top: 30px;
+  left: 30px;
 }
 
 h2 {
-    margin: 8px 0;
+  margin: 8px 0;
 }
 
 .category {
-    font-size: 14px;
-    text-transform: uppercase;
-    font-weight: 900;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 900;
 }
 
 .overlay {
-    background: rgba(255, 255, 255, 0.548);
-    opacity: 0.2;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    z-index: 99;
+  background: rgba(255, 255, 255, 0.548);
+  opacity: 0.2;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index: 99;
 }
 
 .closeButton {
-    border-radius: 50%;
-    background-color: transparent;
-    padding: 4px;
-    cursor: pointer;
+  border-radius: 50%;
+  background-color: transparent;
+  padding: 4px;
+  cursor: pointer;
 }
 
 /* .overlay a {
@@ -197,138 +197,138 @@ h2 {
 } */
 
 .content-container {
-    padding: 460px 35px 35px 35px;
-    max-width: 700px;
-    width: 90vw;
+  padding: 460px 35px 35px 35px;
+  max-width: 700px;
+  width: 90vw;
 }
 
 p {
-    color: #9d9ca1;
-    font-size: 20px;
-    line-height: 28px;
+  color: #9d9ca1;
+  font-size: 20px;
+  line-height: 28px;
 }
 /* ========== */
 .text {
-    font-size: 6rem;
-    font-family: "Londrina Outline", cursive;
-    font-weight: 900;
+  font-size: 6rem;
+  font-family: "Londrina Outline", cursive;
+  font-weight: 900;
 }
 .inArrow {
-    margin-left: -4rem;
-    width: 4rem;
+  margin-left: -4rem;
+  width: 4rem;
 }
 .curve {
-    flex: 1;
-    padding: 42px;
+  flex: 1;
+  padding: 42px;
 }
 .arrow {
-    transform: rotate(-138deg);
-    width: 3rem;
+  transform: rotate(-138deg);
+  width: 3rem;
 }
 
 .desc {
-    color: white;
-    font-size: 21px;
-    line-height: 36px;
+  color: white;
+  font-size: 21px;
+  line-height: 36px;
 }
 .projects {
-    width: 100%;
-    font-size: 1.3rem;
-    padding: 83px 0 24px 0;
-    /* padding-top: 83px; */
-    text-align: center;
-    font-family: "Haas";
+  width: 100%;
+  font-size: 1.3rem;
+  padding: 83px 0 24px 0;
+  /* padding-top: 83px; */
+  text-align: center;
+  font-family: "Haas";
 }
 
 /* ============ */
 
 @media only screen and (max-width: 800px) {
-    .card {
-        flex: 0 0 50%;
-        max-width: 50%;
-    }
+  .card {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
 
-    .card:nth-child(4n + 1),
-    .card:nth-child(4n + 4) {
-        flex: 0 0 50%;
-        max-width: 50%;
-    }
+  .card:nth-child(4n + 1),
+  .card:nth-child(4n + 4) {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
 }
 
 @media only screen and (max-width: 600px) {
-    .projects {
-        font-size: 1.1rem;
-        padding: 144px 41px 24px 32px;
-    }
-    .content-container {
-        width: 100vw;
-    }
-    .desc {
-        font-size: 19px;
-        line-height: 25px;
-    }
-    .card {
-        flex: 1 0 100%;
-        max-width: 100%;
-        padding: 10px;
-        padding-left: 0;
-        padding-right: 0;
-    }
-    .open .card-content {
-        border-radius: 0;
-    }
-    .card-1 {
-        flex: 1 1 50rem;
-        padding-bottom: 1rem;
-        padding-left: 0;
-        padding-top: 0;
-        padding-right: 0;
-    }
-    .curve {
-        padding: 0;
-    }
-    .inArrow {
-        margin-left: -2rem;
-        width: 3rem;
-    }
-    .text {
-        font-size: 3rem;
-    }
-    .card-2 {
-        flex: 1 1 50rem;
-        padding-bottom: 1rem;
-        padding-left: 0;
-        padding-top: 0;
-        padding-right: 0;
-    }
-    .card-3 {
-        padding-left: 0;
-        padding-top: 0;
-        padding-right: 0;
-        margin-bottom: 1rem;
-    }
-    .card-4 {
-        padding-left: 0;
-        padding-top: 0;
-        padding-right: 0;
-        margin-bottom: 1rem;
-        height: 450px;
-    }
-    .card:nth-child(4n + 1),
-    .card:nth-child(4n + 4) {
-        flex: 1 0 100%;
-        max-width: 100%;
-    }
-    .card-image {
-        width: 40rem;
-    }
-    .container {
-        padding: 0 25px;
-    }
-    .card-content-container.open {
-        padding: 0;
-    }
-    .card-open-button {
-        margin: 0 0 2.8rem 1.4rem;
-    }
+  .projects {
+    font-size: 1.1rem;
+    padding: 90px 41px 24px 32px;
+  }
+  .content-container {
+    width: 100vw;
+  }
+  .desc {
+    font-size: 19px;
+    line-height: 25px;
+  }
+  .card {
+    flex: 1 0 100%;
+    max-width: 100%;
+    padding: 10px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .open .card-content {
+    border-radius: 0;
+  }
+  .card-1 {
+    flex: 1 1 50rem;
+    padding-bottom: 1rem;
+    padding-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+  }
+  .curve {
+    padding: 0;
+  }
+  .inArrow {
+    margin-left: -2rem;
+    width: 3rem;
+  }
+  .text {
+    font-size: 3rem;
+  }
+  .card-2 {
+    flex: 1 1 50rem;
+    padding-bottom: 1rem;
+    padding-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+  }
+  .card-3 {
+    padding-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    margin-bottom: 1rem;
+  }
+  .card-4 {
+    padding-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    margin-bottom: 1rem;
+    height: 450px;
+  }
+  .card:nth-child(4n + 1),
+  .card:nth-child(4n + 4) {
+    flex: 1 0 100%;
+    max-width: 100%;
+  }
+  .card-image {
+    width: 40rem;
+  }
+  .container {
+    padding: 0 25px;
+  }
+  .card-content-container.open {
+    padding: 0;
+  }
+  .card-open-button {
+    margin: 0 0 2.8rem 1.4rem;
+  }
 }
