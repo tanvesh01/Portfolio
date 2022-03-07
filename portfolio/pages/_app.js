@@ -44,6 +44,7 @@ function MyApp({ Component, pageProps }) {
         {/* Twitter */}
         {/* <meta name="twitter:card" content="summary" key="twcard" /> */}
         {/* <meta name="twitter:image" content="/meta.png"></meta> */}
+        <link rel="shortcut icon" href="/green.svg" />
 
         <title>Tanvesh</title>
       </Head>
