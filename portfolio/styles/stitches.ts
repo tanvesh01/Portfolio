@@ -8,6 +8,18 @@ export const { styled, css, getCssText, keyframes } = createStitches({
       purple500: "hsl(252,78%,60%)",
       green500: "hsl(148,60%,60%)",
       red500: "hsl(352,100%,62%)",
+
+      // grey colors that I copied from uiw.tf
+      gray0: "#f8f9fa",
+      gray1: "#f4f5f6",
+      gray2: "#e9ecef",
+      gray3: "#dee2e6",
+      gray4: "#ced4da",
+      gray5: "#adb5bd",
+      gray6: "#868e96",
+      gray7: "#495057",
+      gray8: "#343a40",
+      gray9: "#212529",
     },
     space: {
       1: "5px",
