@@ -38,6 +38,7 @@ export const { styled, css, getCssText, keyframes } = createStitches({
     },
     fonts: {
       heading: "Haas",
+      para:"'Inter', sans-serif"
     },
     fontWeights: {},
     lineHeights: {},
