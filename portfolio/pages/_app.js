@@ -1,6 +1,8 @@
 import "../styles/globals.css";
 import "../public/Projects.css";
 import "../public/projectGallery.css";
+import "../styles/list.css";
+
 import { motion } from "framer-motion";
 import Head from "next/head";
 

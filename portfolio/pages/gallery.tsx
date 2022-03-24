@@ -1,8 +1,17 @@
-import React, { FC, useEffect, useRef, useState } from "react";
+import React, { FC, useEffect, useRef, useState, Fragment } from "react";
 import ReactDOM from "react-dom";
 import { styled } from "@styles/stitches";
-import { convertTransitionToAnimationOptions } from "framer-motion/types/animation/utils/transitions";
+import { motion, LayoutGroup, AnimatePresence } from "framer-motion";
+
 import Head from "next/head";
+import {
+  GithubIcon,
+  TwitterFillIcon,
+  LinkedInFillIcon,
+  EmailOutlineIcon,
+  HomeFillIcon,
+  BackIcon,
+} from "Components/Icons";
 
 const renderPortal = (HTMLElement: React.ReactNode) =>
   ReactDOM.createPortal(
@@ -32,31 +41,163 @@ interface CommandCenterTypes {
   onCloseHandler: () => void;
 }
 
+/*
+  input array = 0 1 2 3 4
+                  ------- 
+                  0 1 2 3                
+
+
+*/
+
 const CommandCenter: FC<CommandCenterTypes> = ({ onCloseHandler }) => {
+  const options = ["Go To Home", "Go To Back", "Github"];
+
+  const cmdOptions = [
+    {
+      sectionName: "Navigation",
+      options: [
+        {
+          indexForRef: 0,
+          content: () => (
+            <>
+              <HomeFillIcon /> Go to Home
+            </>
+          ),
+        },
+        {
+          indexForRef: 1,
+          content: () => (
+            <>
+              <BackIcon /> Go Back
+            </>
+          ),
+        },
+      ],
+    },
+    {
+      sectionName: "Socials",
+      options: [
+        {
+          indexForRef: 2,
+          content: () => (
+            <>
+              <GithubIcon /> GitHub
+            </>
+          ),
+        },
+        {
+          indexForRef: 3,
+          content: () => (
+            <>
+              <TwitterFillIcon /> Twitter
+            </>
+          ),
+        },
+      ],
+    },
+  ];
+
   const modalRef = useRef<HTMLDivElement>(null);
+  const indexRef = useRef({
+    selectedOptionIndex: 1,
+  });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [number, setNumber] = useState(false);
+
   const handleKeyboardEvents = (e: KeyboardEvent) => {
     const elementArray = getAllElementsInsideModal(modalRef.current),
-      lastElement = elementArray[elementArray.length - 1];
-
+      lastElement = elementArray[elementArray.length - 1],
+      lastOptionIndex = elementArray.length - 1;
+    // console.log(elementArray);
     const tabKey = e.key === "Tab";
     const escapeKey = e.key === "Escape";
     const shiftKey = e.shiftKey;
 
     const buttonOpener = document.getElementById("open-cmd");
 
-    if (shiftKey && tabKey && e.target === elementArray[0]) {
+    if (e.key === "ArrowDown" || tabKey) {
       e.preventDefault();
-      (lastElement as HTMLElement).focus();
+      if (indexRef.current.selectedOptionIndex === elementArray.length - 1) {
+        elementArray[indexRef.current.selectedOptionIndex].ariaSelected =
+          "false";
+        elementArray[1].ariaSelected = "true";
+        elementArray[1].scrollIntoView({
+          block: "nearest",
+          behavior: "smooth",
+        });
+        indexRef.current.selectedOptionIndex = 1;
+        setSelectedIndex(indexRef.current.selectedOptionIndex);
+      } else {
+        elementArray[indexRef.current.selectedOptionIndex].ariaSelected =
+          "false";
+        elementArray[indexRef.current.selectedOptionIndex + 1].ariaSelected =
+          "true";
+        elementArray[indexRef.current.selectedOptionIndex + 1].scrollIntoView({
+          block: "nearest",
+          behavior: "smooth",
+        });
+        indexRef.current.selectedOptionIndex =
+          indexRef.current.selectedOptionIndex + 1;
+        setSelectedIndex(indexRef.current.selectedOptionIndex);
+      }
+    }
+    if (e.key === "ArrowUp" || (shiftKey && tabKey)) {
+      e.preventDefault();
+      console.log(shiftKey, tabKey);
+
+      if (indexRef.current.selectedOptionIndex === 1) {
+        elementArray[indexRef.current.selectedOptionIndex].ariaSelected =
+          "false";
+        elementArray[lastOptionIndex].ariaSelected = "true";
+        elementArray[lastOptionIndex].scrollIntoView({
+          block: "nearest",
+          behavior: "smooth",
+        });
+        indexRef.current.selectedOptionIndex = lastOptionIndex;
+        setSelectedIndex(indexRef.current.selectedOptionIndex);
+      } else {
+        elementArray[indexRef.current.selectedOptionIndex].ariaSelected =
+          "false";
+        elementArray[indexRef.current.selectedOptionIndex - 1].ariaSelected =
+          "true";
+        elementArray[indexRef.current.selectedOptionIndex - 1].scrollIntoView({
+          block: "nearest",
+          behavior: "smooth",
+        });
+        indexRef.current.selectedOptionIndex =
+          indexRef.current.selectedOptionIndex - 1;
+        setSelectedIndex(indexRef.current.selectedOptionIndex);
+      }
     }
 
-    if (tabKey && !shiftKey && lastElement === e.target) {
-      e.preventDefault();
-      console.log("last Key");
-      (elementArray[0] as HTMLElement).focus();
-    }
+    // if (shiftKey && tabKey && e.target === elementArray[0]) {
+    //   e.preventDefault();
+    //   (lastElement as HTMLElement).focus();
+    // }
+
+    // if (tabKey && !shiftKey && lastElement === e.target) {
+    //   e.preventDefault();
+    //   console.log("last Key");
+    //   (elementArray[0] as HTMLElement).focus();
+    // }
     if (escapeKey) {
+      e.preventDefault();
       buttonOpener?.focus();
       onCloseHandler();
+    }
+  };
+
+  const handleHoverEvents = (e) => {
+    const elementArray = getAllElementsInsideModal(modalRef.current);
+
+    if (
+      e.target.tagName === "BUTTON" &&
+      elementArray[indexRef.current.selectedOptionIndex].ariaSelected
+    ) {
+      elementArray[indexRef.current.selectedOptionIndex].ariaSelected = "false";
+      e.target.ariaSelected = "true";
+      indexRef.current.selectedOptionIndex = Number(e.target.dataset.index) + 1;
+      setSelectedIndex(indexRef.current.selectedOptionIndex);
     }
   };
 
@@ -64,100 +205,244 @@ const CommandCenter: FC<CommandCenterTypes> = ({ onCloseHandler }) => {
     const elementArray = getAllElementsInsideModal(modalRef.current);
     (elementArray[0] as HTMLElement).focus();
     document.addEventListener("keydown", handleKeyboardEvents);
+    document.addEventListener("mouseover", handleHoverEvents);
     return () => {
       document.removeEventListener("keydown", handleKeyboardEvents);
+      document.removeEventListener("mouseover", handleHoverEvents);
     };
   }, []);
 
   if (typeof window !== "undefined") {
     return (
-      document &&
-      renderPortal(
+      <React.Fragment>
+        <Overlay />
         <ModalBody ref={modalRef}>
           <CmdSearch
+            autoFocus={true}
+            // onBlur={(e) => e.target.focus()}
             name="search"
-            placeholder="What the fuck are you searching for?"
+            autoComplete="off"
+            placeholder="What are you searching for?"
           />
-        <OptionsContainer>
+          {/* <button onClick={() => setNumber(!number)}>change number</button> */}
+          <Divider />
+          <OptionsContainer>
+            <LayoutGroup id="top5">
+              {/* {options.map((item, index) => {
+                return (
+                  <CmdOptions
+                    key={index}
+                    data-index={index}
+                    aria-selected={index === 0 ? "true" : false}
+                  >
+                    <p>{item}</p>
+                    {selectedIndex - 1 === index ? (
+                      <Underline
+                        layoutId="underline"
+                        initial={{ zIndex: "98" }}
+                        animate={{ zIndex: 98 }}
+                      />
+                    ) : null}
+                  </CmdOptions>
+                );
+              })} */}
+              {cmdOptions.map(({ sectionName, options }, index) => {
+                return (
+                  <Fragment>
+                    <GroupHeading>{sectionName}</GroupHeading>
+                    {options.map(({ content, indexForRef }, index) => {
+                      return (
+                        <CmdOptions
+                          key={indexForRef}
+                          data-index={indexForRef}
+                          aria-selected={indexForRef === 0 ? "true" : false}
+                        >
+                          <p>{content()}</p>
+                          {selectedIndex - 1 === indexForRef ? (
+                            <Underline
+                              layoutId="underline"
+                              initial={{ zIndex: "98" }}
+                              animate={{ zIndex: 98 }}
+                            />
+                          ) : null}
+                        </CmdOptions>
+                      );
+                    })}
+                  </Fragment>
+                );
+              })}
+            </LayoutGroup>
+            {/* <ul>
+              {options.map((item, index) => {
+                return (
+                  <li
+                    key={item}
+                    
+                  >
+                    {item}
+                    {selectedIndex === index ? (
+                      <motion.div className="underline" layoutId="underline" />
+                    ) : null}
+                  </li>
+                );
+              })}
+            </ul> */}
 
-          <GroupHeading>Navigation</GroupHeading>
-          <CmdOptions>Go to Home</CmdOptions>
-          <CmdOptions>Go to Back</CmdOptions>
-          <GroupHeading>Actions</GroupHeading>
-          <CmdOptions>option 3</CmdOptions>
-          <CmdOptions>option 4</CmdOptions>
-          <CmdOptions>option 5</CmdOptions>
-          <CmdOptions>option 5</CmdOptions>
-          <CmdOptions>option 5</CmdOptions>
-          <CmdOptions>option 5</CmdOptions>
-        </OptionsContainer>
+            {/* <LayoutGroup id="top5">
+                <GroupHeading>Navigation</GroupHeading>
+                <CmdOptions aria-selected="true">
+                  <HomeFillIcon /> Go to Home
+                </CmdOptions>
+                <CmdOptions>
+                  <BackIcon /> Go to Back
+                </CmdOptions>
+                <GroupHeading>Actions</GroupHeading>
+                {number ? (
+                  <Underline
+                    className="underline"
+                    layoutId="underline"
+                    transition={spring}
+                  ></Underline>
+                ) : null}
+                <CmdOptions>
+                  <GithubIcon /> Github
+                </CmdOptions>
+                <CmdOptions>
+                  <TwitterFillIcon /> Twitter
+                </CmdOptions>
+                {!number ? (
+                  <Underline
+                    className="underline"
+                    layoutId="underline"
+                    transition={spring}
+                  ></Underline>
+                ) : null}
+                <CmdOptions>
+                  <LinkedInFillIcon /> LinkedIn
+                </CmdOptions>
+                <CmdOptions>
+                  <EmailOutlineIcon /> Email Me
+                </CmdOptions>
+              </LayoutGroup> */}
+          </OptionsContainer>
         </ModalBody>
-      )
+      </React.Fragment>
     );
   }
   return <></>;
 };
 
+const Underline = styled(motion.div, {
+  "--accent": "#8855ff",
+  position: "absolute",
+  left: "0",
+  right: 0,
+  height: "100%",
+  // width: "200px",
+  borderRadius: "5px",
+  background: "white",
+  // background: "var(--accent)",
+});
+
+const Divider = styled("hr", {
+  border: "1px solid white",
+  borderWidth: "1px 0 0 0",
+});
+
 const OptionsContainer = styled("div", {
-  height:"calc(340px - 3.2rem)",
-  overflow:"auto",
-  padding:"0 10px"
-})
+  height: "calc(340px - 3.2rem)",
+  overflow: "auto",
+  padding: "0 10px",
+  paddingTop: "10px",
+});
 
 const GroupHeading = styled("p", {
-  color:"$gray7",
-  fontFamily:"$para",
-  fontSize:"0.875rem",
-})
+  color: "$gray7",
+  fontFamily: "$para",
+  fontSize: "0.875rem",
+});
 
 const CmdOptions = styled("button", {
-  border:0,
-  display:"flex",
-  alignItems:"center",
-  fontFamily:"$para",
-  width:"100%",
-  height:"3rem",
-  background:"white",
-  color:"$gray8",
-  padding:"0 10px",
-  borderRadius:"5px",
-  "&:focus, &:focus-within, &:focus-visible, &:hover":{
-    background:"$gray2",
-    outline:0
-  }
-})
+  position: "relative",
+
+  border: 0,
+  display: "flex",
+  alignItems: "center",
+  fontFamily: "$para",
+  width: "100%",
+  height: "2.5rem",
+  background: "#eeeff3",
+  color: "#333333",
+  padding: "0 10px",
+  borderRadius: "5px",
+
+  "& p": {
+    fontSize: "0.8rem",
+    zIndex: "99",
+  },
+
+  // "&:focus, &:focus-within, &:focus-visible, &:hover": {
+  //   background: "white",
+  //   outline: 0,
+  //   boxShadow: "rgb(224 227 235) 0px 2px 15px 2px",
+  // },
+  // '&[aria-selected="true"]': {
+  //   boxShadow: "rgb(224 227 235) 0px 2px 15px 2px",
+  //   background: "white",
+  //   outline: 0,
+  //   zIndex: 1000,
+  // },
+});
 
 const CmdSearch = styled("input", {
-  display:"block",
-  width:"100%",
-  height:"3rem",
-  padding:"0 1rem",
-  border:0,
-  fontFamily:"$para",
-})
+  display: "block",
+  width: "100%",
+  height: "3rem",
+  padding: "0 1rem",
+  border: 0,
+  fontSize: "1.1rem",
+  fontFamily: "$para",
+  background: "inherit",
+  borderRadius: "var(--inner-radius)",
+  "&:focus, &:focus-within, &:focus-visible, &:hover": {
+    outline: 0,
+  },
+});
+
+const Overlay = styled("div", {
+  position: "fixed",
+  top: 0,
+  left: 0,
+  height: "100%",
+  width: "100%",
+  background: "rgb(217 220 227 / 59%)",
+});
 
 const ModalBody = styled("div", {
+  "--inner-radius": "10px",
+  "--border-width": "9px",
   position: "fixed",
   top: "20%",
   left: "50%",
-  boxShadow: "0 16px 70px rgba(0,0,0,.2)",
+  boxShadow: "rgb(208 211 221) 0px 0px 50px 20px",
   width: "640px",
-  height: "340px",
-  borderRadius: "0.5rem",
+  height: "367px",
+  borderRadius: "calc(var(--inner-radius) + var(--border-width))",
   transformOrigin: "50%",
   transform: "translateX(-50%)",
-  border: "1px solid #e9ecef",
+  border: "9px solid #E2E6EE",
+  zIndex: "100",
+  background: "#EDEFF3",
   // padding: "1rem",
 });
 
 const Gallery = () => {
   const [isCmdOpen, setIsCmdOpen] = useState(false);
+
   return (
     <div>
       <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+        <title>Gallery</title>
       </Head>
       <button id="open-cmd" onClick={() => setIsCmdOpen(!isCmdOpen)}>
         Open
@@ -168,6 +453,5 @@ const Gallery = () => {
     </div>
   );
 };
-
 
 export default Gallery;

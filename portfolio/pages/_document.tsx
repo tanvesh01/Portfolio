@@ -10,6 +10,7 @@ class MyDocument extends Document {
             id="stitches"
             dangerouslySetInnerHTML={{ __html: getCssText() }}
           />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             href="https://fonts.googleapis.com/css2?family=Londrina+Shadow&display=swap"
             rel="stylesheet"
@@ -18,6 +19,15 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Londrina+Outline&display=swap"
             rel="stylesheet"
           ></link>
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin="true"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         <body>
           <Main />
