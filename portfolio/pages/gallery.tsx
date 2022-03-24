@@ -1,8 +1,8 @@
 import React, { FC, useEffect, useRef, useState, Fragment } from "react";
 import ReactDOM from "react-dom";
 import { styled } from "@styles/stitches";
-import { motion, LayoutGroup, AnimatePresence } from "framer-motion";
-
+import { motion, LayoutGroup } from "framer-motion";
+import { createApi } from "unsplash-js";
 import Head from "next/head";
 import {
   GithubIcon,
@@ -435,6 +435,32 @@ const ModalBody = styled("div", {
   background: "#EDEFF3",
   // padding: "1rem",
 });
+
+// export const getServerSideProps = async () => {
+//   const api = createApi({
+//     // Don't forget to set your access token here!
+//     // See https://unsplash.com/developers
+//     accessKey: "Cm4qYkwUqyC9KkcVNwPuxa3OmBSVvZIYD2-M9I6JAZ0",
+//   });
+
+//   let images;
+
+//   const result = await api.search.getPhotos({
+//     query: "landscapes",
+//     orientation: "landscape",
+//   });
+//   // .then((result) => {
+//   //   console.log(result);
+//   //   images = result;
+//   // })
+//   // .catch(() => {
+//   //   console.log("something went wrong!");
+//   // });
+//   // console.log(images, "images");
+//   return {
+//     props: { images: result.response }, // will be passed to the page component as props
+//   };
+// };
 
 const Gallery = () => {
   const [isCmdOpen, setIsCmdOpen] = useState(false);
