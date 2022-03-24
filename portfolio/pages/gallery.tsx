@@ -462,6 +462,8 @@ const ModalBody = styled("div", {
 //   };
 // };
 
+// Blur images that you get from unsplash on the server
+
 const Gallery = () => {
   const [isCmdOpen, setIsCmdOpen] = useState(false);
 
