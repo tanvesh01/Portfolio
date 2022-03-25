@@ -12,6 +12,7 @@ import {
   HomeFillIcon,
   BackIcon,
 } from "Components/Icons";
+import LandscapeGrid from "src/GalleryComponents/LandscapeGrid/LandscapeGrid";
 
 const renderPortal = (HTMLElement: React.ReactNode) =>
   ReactDOM.createPortal(
@@ -478,6 +479,7 @@ const Gallery = () => {
       {isCmdOpen && (
         <CommandCenter onCloseHandler={() => setIsCmdOpen(false)} />
       )}
+      <LandscapeGrid />
     </div>
   );
 };
