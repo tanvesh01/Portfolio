@@ -2,6 +2,11 @@ import { keyframes, styled } from "@styles/stitches";
 import React from "react";
 import { resultFromUnsplash } from "src/constants";
 
+const move = keyframes({
+  "0%": { transform: "rotate(0deg)" },
+  "100%": { transform: "rotate(360deg)" },
+});
+
 const LandscapeGrid = () => {
   return (
     <LandscapeGridContainer>
@@ -11,7 +16,15 @@ const LandscapeGrid = () => {
             <BigImage src={info.urls.regular} />
             <SmallImage src={info.urls.regular} />
             <SmallImageWrapper></SmallImageWrapper>
-            <ImagePlaceholder />
+            <ImagePlaceholder src={info.urls.regular} />
+            <div>
+              <StyledHeading>
+                {info.description || info.alt_description}
+              </StyledHeading>
+              <StyledLinkAuthor href={info.user.portfolio_url}>
+                {info.user.name}
+              </StyledLinkAuthor>
+            </div>
           </CardContainer>
         );
       })}
@@ -19,9 +32,13 @@ const LandscapeGrid = () => {
   );
 };
 
-const move = keyframes({
-  "0%": { transform: "rotate(0deg)", scale: "1" },
-  "100%": { transform: "rotate(360deg)", scale: "1.3" },
+const StyledLinkAuthor = styled("a", {
+  color: "grey",
+});
+
+const StyledHeading = styled("h4", {
+  color: "white",
+  fontWeight: 400,
 });
 
 const BigImage = styled("img", {
@@ -31,9 +48,10 @@ const BigImage = styled("img", {
   position: "absolute",
   top: "30%",
   left: 0,
+
   filter: "blur(30px) saturate(250%)",
   opacity: "0.7",
-
+  zIndex: "-1",
   animation: `${move} 50s infinite linear`,
 });
 
@@ -47,19 +65,20 @@ const SmallImage = styled("img", {
   position: "absolute",
   top: "37%",
   left: "0%",
+  zIndex: -1,
   filter: "blur(30px)",
-  zIndex: 2,
   animation: `${move} 10s infinite linear`,
-  clipPath: "polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)",
+  // clipPath: "polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)",
 });
 
-const ImagePlaceholder = styled("div", {
-  width: "90%",
+const ImagePlaceholder = styled("img", {
+  width: "100%",
   height: "40%",
   backgroundColor: "white",
-  margin: "0 auto",
+  // margin: "0 auto",
   position: "relative",
   zIndex: "3",
+  display: "block",
 });
 
 const SmallImageWrapper = styled("div", {
@@ -70,11 +89,16 @@ const SmallImageWrapper = styled("div", {
 });
 
 const CardContainer = styled("div", {
-  height: "500px",
-  border: "1px solid grey",
+  height: "400px",
   overflow: "hidden",
   position: "relative",
   backgroundColor: "transparent",
+  padding: "1rem",
+  display: "grid",
+  gridTemplateRows: "1fr 1fr",
+  fontFamily: "Haas",
+  gap: "1rem",
+  boxShadow: "0 30px 60px rgba(0, 0, 0, 0.12)",
 });
 
 const LandscapeGridContainer = styled("div", {
