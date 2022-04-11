@@ -4,7 +4,7 @@ import { resultFromUnsplash } from "src/constants";
 import { StyledLinksContainer } from "./components";
 
 const move = keyframes({
-  "0%": { transform: "rotate(0deg)" },
+  "0%": { transform: "rotate(60deg)" },
   "100%": { transform: "rotate(360deg)" },
 });
 
@@ -29,12 +29,43 @@ const LandscapeGrid = () => {
                 </StyledLinkAuthor>
               </StyledLinksContainer>
             </div>
+            <StyledButton>
+              <TextContent> explore</TextContent>
+              <ImageInsideButton src={info.urls.regular} />
+            </StyledButton>
           </CardContainer>
         );
       })}
     </LandscapeGridContainer>
   );
 };
+
+const TextContent = styled("p", {
+  zIndex: 5,
+  color: "white",
+  position: "relative",
+});
+
+const StyledButton = styled("button", {
+  padding: "12px 16px",
+  position: "relative",
+  overflow: "hidden",
+  zIndex: 5,
+  filter: "grayscale(1)",
+  fontFamily: "Haas",
+  color: "white",
+});
+
+const ImageInsideButton = styled("img", {
+  position: "absolute",
+  left: 0,
+  top: "40px",
+  objectFit: "cover",
+  width: "100%",
+  height: "100%",
+  filter: "blur(20px) brightness(10%) saturate(150%)",
+  transform: "scale(2)",
+});
 
 const Texture = styled("div", {
   backgroundColor: "#DFDBE5",
@@ -44,7 +75,7 @@ const Texture = styled("div", {
   left: 0,
   width: "100%",
   height: "100%",
-  zIndex: 6,
+  zIndex: 4,
   opacity: "0.3",
   mixBlendMode: "color-dodge",
 });
@@ -65,6 +96,7 @@ const StyledLinkAuthor = styled("a", {
 const StyledHeading = styled("h4", {
   color: "white",
   fontWeight: 400,
+  textTransform: "lowercase",
 });
 
 const BigImage = styled("img", {
@@ -74,9 +106,8 @@ const BigImage = styled("img", {
   position: "absolute",
   top: "30%",
   left: 0,
-
   filter: "blur(30px) saturate(250%)",
-  opacity: "0.7",
+  opacity: "0.9",
   zIndex: "-1",
   animation: `${move} 50s infinite linear`,
 });
@@ -91,7 +122,7 @@ const SmallImage = styled("img", {
   position: "absolute",
   top: "37%",
   left: "0%",
-  zIndex: -1,
+  zIndex: 6,
   filter: "blur(30px)",
   animation: `${move} 40s infinite linear`,
   // clipPath: "polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)",
