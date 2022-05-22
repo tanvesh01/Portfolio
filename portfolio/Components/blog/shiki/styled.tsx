@@ -7,20 +7,21 @@ const CodePreBlockWithHighlight = styled.pre`
 	padding: 20px;
 	margin: 1rem -20px;
 	margin-left: -2.5rem;
-	border-radius: var(--border-radius);
-	overflow-x: scroll;
+	border-radius: 5px;
+	overflow-x: auto;
     font-family: 'JetBrains Mono', monospace;
     
 `;
 
 const CodeBlockLanguageWrapper = styled.span`
 	float: right;
-	background-color: #2c2c2c;
+	background-color: #38404a;
 	color: #bbbbbb;
 	margin-top: -19px;
+	margin-right: 5px;
 	padding: 10px 5px;
-	border-bottom-left-radius: var(--border-radius);
-	border-bottom-right-radius: var(--border-radius);
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
 `;
 
 const CodeblockLineNumber = styled.span`
@@ -34,19 +35,23 @@ const CodeblockLineNumber = styled.span`
 	
 `;
 
-const CodeblockLineWrapper = styled.div<{ $highlight?: boolean }>`
+/**
+ The Highlight code block has the styles for highlighted code
+*/
+ const CodeblockLineWrapper = styled.div<{ $highlight?: boolean }>`
 	height: calc(0.85rem * 1.5);
 
 	${({ $highlight }) =>
 		$highlight &&
 		css`
-			background-color: rgb(255, 255, 255, 0.07);
+			background-color: rgb(106 184 71 / 9%);
 			display: block;
 			margin-right: -20px;
 			margin-left: -20px;
 			padding-right: 15px;
 			padding-left: 15px;
-			border-left: 5px solid #9d86e9;
+			border-left: 5px solid #27af52;
+			
 		`}
 
 	& > ${CodeblockLineNumber} {
@@ -81,14 +86,15 @@ function calculateLinesToHighlight(meta = "") {
 }
 
 export const CodeBlock = (
-	props: PropsWithChildren<{ language: string; highlight?: string; style: CSSProperties }>
+	props: PropsWithChildren<{ language: string; highlight?: string; style: CSSProperties; filename?:string }>
 ) => {
-	const { language, children, highlight, style } = props;
+	const { language, children, highlight, style, filename } = props;
 	const shouldHighlightLine = calculateLinesToHighlight(highlight);
 
 	return (
 		<CodePreBlockWithHighlight {...{ style }}>
 			<CodeBlockLanguageWrapper>{language.toLocaleUpperCase()}</CodeBlockLanguageWrapper>
+			<CodeBlockLanguageWrapper>{filename}</CodeBlockLanguageWrapper>
 			{Array.isArray(children) ? (
 				children
 					?.filter((line) => line !== "\n")

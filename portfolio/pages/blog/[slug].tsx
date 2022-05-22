@@ -7,6 +7,9 @@ import { getBlogPostsSlugs, getMDXFileData } from "@utils/blog";
 import { RoughNotation } from "react-rough-notation";
 import { styled } from "@styles/stitches";
 import { CodeBlock } from "Components/blog/shiki/styled";
+import { CustomImage } from "Components/blog/CustomImage/CustomImage";
+import {LandingImage} from "Components/blog/LandingImage/LandingImage"
+import {CustomBlockquote} from "Components/blog/CustomBlockquote/CustomBlockquote"
 
 type TBlogPostFrontmatter = {
 	title: string;
@@ -74,17 +77,21 @@ const Link = styled("a", {
 
 // color="#fff176"
 
-
+const Paragraph = styled("p", {
+	padding: "10px 0px",
+	fontFamily:"Inter",
+	color:"Black"
+})
 
 
 
 const MDXComponents = {
-	// p: Paragraph,
+	p: Paragraph,
 	h1: Heading,
 	// h2: MDXHeadingWrapper.h2,
 	// h3: MDXHeadingWrapper.h3,
 	pre: CodeBlock,
-	// img: CustomImage,
+	img: CustomImage,
 	a: Link,
 
 	// ul: UnorderedList,
@@ -93,10 +100,10 @@ const MDXComponents = {
 
 // gotta use https://roughnotation.com/
 
-const Post = ({ code, frontmatter, slug }: TProps) => {
+const Post = ({ code, frontmatter, slug, matter }: TProps) => {
 	const topRef = useRef<HTMLDivElement>(null);
 	const Component = useMemo(() => getMDXComponent(code), [code]);
-
+	console.log(code, matter)
 	return (
 		<>
 			<DocumentHead
@@ -106,11 +113,6 @@ const Post = ({ code, frontmatter, slug }: TProps) => {
 			/>
 			{/* <ReadingProgress /> */}
 			<div ref={topRef} />
-            <h1>
-				{frontmatter.title}
-            </h1>
-
-
 			<Container>
 				<Component
 
@@ -123,11 +125,12 @@ const Post = ({ code, frontmatter, slug }: TProps) => {
 						// HighlightWithUseEffect,
 						// HighlightWithUseInterval,
 
-						// CustomBlockquote,
 						// TextGradient: PrimaryGradient,
 						// Heavy,
 						// StyledAccentTextLink,
 						// RoughNotation,
+						CustomBlockquote,
+						LandingImage,
 						...MDXComponents,
 					}}
 				/>
