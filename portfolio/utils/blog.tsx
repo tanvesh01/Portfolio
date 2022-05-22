@@ -4,6 +4,7 @@ import { promises as fs } from "fs";
 import path from "path";
 
 // import karmaThemeJSON from "@sreetamdas/karma/themes/Karma-color-theme.json";
+import ThemeJSON from "../constants/github-dark-dimmed.json"
 import { bundleMDX } from "mdx-bundler";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
@@ -11,7 +12,8 @@ import remarkSlug from "remark-slug";
 import remarkToc from "remark-toc";
 import { getHighlighter, toShikiTheme } from "shiki";
 import { IRawTheme } from "vscode-textmate";
-
+import { remarkShiki } from "Components/blog/shiki";
+import { renderToHTML } from "Components/blog/shiki/renderer";
 // import { rehypeImgSize } from "@/components/mdx/images/plugins";
 // import { remarkShiki } from "@/components/shiki";
 // import { renderToHTML } from "@/components/shiki/renderer";
@@ -29,19 +31,19 @@ export async function getBlogPostsSlugs() {
 
 export async function bundleMDXWithOptions(filename: string) {
 	const mdxSource = await fs.readFile(filename, "utf8");
-	// const theme = toShikiTheme();
-	const highlighter = await getHighlighter({  });
+	const theme = toShikiTheme(ThemeJSON);
+	const highlighter = await getHighlighter({ theme });
 
 	const result = await bundleMDX({
 		source: mdxSource,
 		cwd: path.dirname(filename),
 		mdxOptions(options, _frontmatter) {
 			options.remarkPlugins = [
-				// ...(options.remarkPlugins ?? []),
-				// [remarkShiki, { highlighter, renderToHTML }],
-				// remarkGfm,
-				// remarkSlug,
-				// [remarkToc, { tight: true }],
+				...(options.remarkPlugins ?? []),
+				[remarkShiki, { highlighter, renderToHTML }],
+				remarkGfm,
+				remarkSlug,
+				[remarkToc, { tight: true }],
 			];
 			options.rehypePlugins = [
 				...(options.rehypePlugins ?? []),

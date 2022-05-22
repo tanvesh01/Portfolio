@@ -8,6 +8,7 @@ export const { styled, css, getCssText, keyframes } = createStitches({
       purple500: "hsl(252,78%,60%)",
       green500: "hsl(148,60%,60%)",
       red500: "hsl(352,100%,62%)",
+      primaryBlue: "#1b5aef"
     },
     space: {
       1: "5px",

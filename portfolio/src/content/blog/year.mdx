@@ -5,17 +5,45 @@ title: Year in Review — 2020
 summary: A look back at 2020, and everything that came with it.
 ---
 
-2020 was a weird year for us all, but here's everything that I was able to do this year anyway:
+# Cut down CRA build times by 70%
 
-# Finally launched my blog!
-
-At the beginning of 2020, I set out to redo my personal website. I was fairly impressed with how I’d built it ([over-engineered](/blog/over-engineering-a-blog) and such), and also with how my blog post — which was a big motivation for revamping my website in the first place — had started to take shape. After months of work (and procrastination), I published my blog post in late November.
+At the beginning of 2020,  I set out to redo my personal website.  I was fairly impressed with how I’d built it ([over-engineered](/blog/over-engineering-a-blog) and such), and also with how my blog post — which was a big motivation for revamping my website in the first place — had started to take shape. After months of work (and procrastination), I published my blog post in late November.
 
 I crossposted it to [dev.to](https://dev.to/sreetamdas/the-perfect-dark-mode-2d7g) and [Hashnode](https://sreetamdas.hashnode.dev/the-perfect-dark-mode), and posted it on [Reddit](https://www.reddit.com/r/reactjs/comments/jywex9/the_perfect_dark_mode_in_nextjs/) as well. It also got picked up by [React Status](https://react.statuscode.com/issues/217) and the [Stack Overflow newsletter](https://stackoverflow.blog/2020/12/11/17089/#h-links-from-around-the-web)!
 
 I'd planned quite a bit for its release, but that still didn't prepare me for the sheer number of people who read my blog post — between all three platforms that I posted on, over 15 thousand checked out the post!
 
 Here's what I wanna say to you — if you've got _that one article_ that you've been sitting on for weeks/months, get it out there! You'd be surprised at how many people find it intriguing :&rpar;
+
+
+
+```jsx highlight="10-21" filename="pages/index.js"
+import { useState } from "react";
+
+const IndexPage = () => {
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+  const handleToggle = (event) => {
+    setIsDarkTheme(event.target.checked);
+  };
+  return (
+    <div>
+      <label>
+        <input
+          type="checkbox"
+          checked={isDarkTheme}
+          onChange={handleToggle}
+        />{" "}
+        Dark
+      </label>
+      <h1>Hello there</h1>
+      <p>General Kenobi!</p>
+    </div>
+  );
+};
+
+export default IndexPage;
+```
 
 ## Became more active on Twitter
 

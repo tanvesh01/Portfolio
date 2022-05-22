@@ -4,7 +4,9 @@ import { bundleMDX } from "mdx-bundler";
 import { getMDXComponent } from "mdx-bundler/client";
 import { DocumentHead } from "Components/shared/seo";
 import { getBlogPostsSlugs, getMDXFileData } from "@utils/blog";
+import { RoughNotation } from "react-rough-notation";
 import { styled } from "@styles/stitches";
+import { CodeBlock } from "Components/blog/shiki/styled";
 
 type TBlogPostFrontmatter = {
 	title: string;
@@ -56,20 +58,40 @@ const Container = styled("div", {
 // })
 
 const Heading = styled("h1", {
-    fontSize: "5rem"
+    fontSize: "3rem",
+	fontFamily:"$heading"
 })
+
+const Link = styled("a", {
+	color: "$primaryBlue",
+	borderBottom:"2px solid transparent",
+	fontWeight:500,
+	"&:hover":{
+		borderColor: "$primaryBlue"
+	},
+	transition:"border-color 0.3s ease, color 0.3s ease"
+})	
+
+// color="#fff176"
+
+
+
+
 
 const MDXComponents = {
 	// p: Paragraph,
 	h1: Heading,
 	// h2: MDXHeadingWrapper.h2,
 	// h3: MDXHeadingWrapper.h3,
-	// pre: CodeBlock,
+	pre: CodeBlock,
 	// img: CustomImage,
-	// a: MDXLinkWrapper,
+	a: Link,
+
 	// ul: UnorderedList,
 	// ol: OrderedList,
 };
+
+// gotta use https://roughnotation.com/
 
 const Post = ({ code, frontmatter, slug }: TProps) => {
 	const topRef = useRef<HTMLDivElement>(null);
@@ -92,6 +114,7 @@ const Post = ({ code, frontmatter, slug }: TProps) => {
 			<Container>
 				<Component
 
+					// @ts-expect-error 
 					components={{
 						// MDXLink,
 						// MDXTitle,
@@ -99,11 +122,12 @@ const Post = ({ code, frontmatter, slug }: TProps) => {
 						// ChromaHighlight,
 						// HighlightWithUseEffect,
 						// HighlightWithUseInterval,
-						// Highlight,
+
 						// CustomBlockquote,
 						// TextGradient: PrimaryGradient,
 						// Heavy,
 						// StyledAccentTextLink,
+						// RoughNotation,
 						...MDXComponents,
 					}}
 				/>
@@ -140,7 +164,7 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-	
+					// @ts-expect-error 
 	const result = await getMDXFileData(params?.slug, { cwd: "content/blog" });
 
 	return { props: { ...result } };

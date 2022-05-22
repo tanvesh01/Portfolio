@@ -10,24 +10,26 @@
   "dependencies": {
     "@stitches/react": "^1.2.6",
     "babel-plugin-styled-components": "^1.11.1",
+    "esbuild": "^0.14.30",
     "framer-motion": "^6.2.7",
+    "mdx-bundler": "^9.0.0",
     "next": "^12.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-intersection-observer": "^8.26.2",
-    "styled-components": "^4.4.1",
-    "mdx-bundler": "^9.0.0",
+    "react-rough-notation": "^1.0.2",
     "rehype-raw": "^6.1.1",
-		"remark-gfm": "^3.0.1",
-		"remark-slug": "^7.0.1",
-		"remark-toc": "^8.0.1",
-		"shiki": "^0.10.1",
-    "vscode-textmate": "^6.0.0",
-    "esbuild": "^0.14.30"
+    "remark-gfm": "^3.0.1",
+    "remark-slug": "^7.0.1",
+    "remark-toc": "^8.0.1",
+    "shiki": "^0.10.1",
+    "styled-components": "^4.4.1",
+    "vscode-textmate": "^6.0.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.19",
     "@types/react": "^17.0.39",
+    "@types/styled-components": "^5.1.25",
     "typescript": "^4.5.5"
   }
 }
