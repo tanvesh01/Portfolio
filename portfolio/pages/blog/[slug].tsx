@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { bundleMDX } from "mdx-bundler";
 import { getMDXComponent } from "mdx-bundler/client";
 import { DocumentHead } from "Components/shared/seo";
@@ -10,6 +10,8 @@ import { CodeBlock } from "Components/blog/shiki/styled";
 import { CustomImage } from "Components/blog/CustomImage/CustomImage";
 import {LandingImage} from "Components/blog/LandingImage/LandingImage"
 import {CustomBlockquote} from "Components/blog/CustomBlockquote/CustomBlockquote"
+import { supabase } from "@utils/supabaseClient";
+import axios from "axios";
 
 type TBlogPostFrontmatter = {
 	title: string;
@@ -100,10 +102,20 @@ const MDXComponents = {
 
 // gotta use https://roughnotation.com/
 
-const Post = ({ code, frontmatter, slug, matter }: TProps) => {
+
+const Post = ({ code, frontmatter, slug }: TProps) => {
 	const topRef = useRef<HTMLDivElement>(null);
 	const Component = useMemo(() => getMDXComponent(code), [code]);
-	console.log(code, matter)
+	console.log(slug)
+
+	useEffect(() => {
+		axios.get("/api/blogs/get-details-blog", {params: { slug }}).then(res => {
+			console.log(res)
+		}).catch(err =>{
+			console.log(err)
+		})
+	}, [])
+
 	return (
 		<>
 			<DocumentHead
@@ -167,8 +179,8 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-					// @ts-expect-error 
-	const result = await getMDXFileData(params?.slug, { cwd: "content/blog" });
+	// @ts-expect-error 
+  const result = await getMDXFileData(params?.slug, { cwd: "content/blog" });
 
 	return { props: { ...result } };
 };
