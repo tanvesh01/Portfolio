@@ -143,3 +143,7 @@ export async function getRootPagesSlugs() {
 
 	return pagesDataWithContent;
 }
+
+export const getHeadingElementsFromMDXComponent = () => {
+	
+}

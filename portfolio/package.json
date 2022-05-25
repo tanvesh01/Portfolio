@@ -21,6 +21,7 @@
     "react-intersection-observer": "^8.26.2",
     "react-rough-notation": "^1.0.2",
     "rehype-raw": "^6.1.1",
+    "remark": "^14.0.2",
     "remark-gfm": "^3.0.1",
     "remark-slug": "^7.0.1",
     "remark-toc": "^8.0.1",

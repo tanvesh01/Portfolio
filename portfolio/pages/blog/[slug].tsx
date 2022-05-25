@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import { useEffect, useMemo, useRef } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import { bundleMDX } from "mdx-bundler";
 import { getMDXComponent } from "mdx-bundler/client";
 import { DocumentHead } from "Components/shared/seo";
@@ -11,7 +11,10 @@ import { CustomImage } from "Components/blog/CustomImage/CustomImage";
 import {LandingImage} from "Components/blog/LandingImage/LandingImage"
 import {CustomBlockquote} from "Components/blog/CustomBlockquote/CustomBlockquote"
 import { supabase } from "@utils/supabaseClient";
+import {remark} from 'remark'
+import remarkToc from 'remark-toc'
 import axios from "axios";
+import TableOfContents from "Components/blog/TableOfContents/TableOfContents";
 
 type TBlogPostFrontmatter = {
 	title: string;
@@ -55,7 +58,9 @@ type TProps = TBlogPostPageProps;
 
 const Container = styled("div", {
     maxWidth:"700px",
-    margin:"0 auto"
+    margin:"0 auto",
+	display: "grid",
+	gridTemplateColumns: "3fr 1fr"
 })
 
 // const Paragraph = styled("p", {
@@ -103,19 +108,39 @@ const MDXComponents = {
 // gotta use https://roughnotation.com/
 
 
-const Post = ({ code, frontmatter, slug }: TProps) => {
+const Post = ({ code, frontmatter, slug, matter }: TProps) => {
 	const topRef = useRef<HTMLDivElement>(null);
 	const Component = useMemo(() => getMDXComponent(code), [code]);
-	console.log(slug)
+	const anchors = React.Children.toArray(Component({
+		// @ts-expect-error
+		components : {
+			CustomBlockquote,
+			LandingImage,
+			...MDXComponents,
+		}
+	})?.props.children)
+    .filter(
+      (child: any) =>
+        child.type && ['h2', 'h3'].includes(child.type)
+    )
+    .map((child: any) => ({
+      url: '#' + child.props.id,
+      depth:
+        (child.type &&
+          parseInt(child.type.replace('h', ''), 0)) ??
+        0,
+      text: child.props.children
+    }));
+	console.log(anchors)
 
-	useEffect(() => {
-		axios.get("/api/blogs/get-details-blog", {params: { slug }}).then(res => {
-			console.log(res)
-		}).catch(err =>{
-			console.log(err)
-		})
-	}, [])
-
+	// useEffect(() => {
+	// 	axios.get("/api/blogs/get-details-blog", {params: { slug }}).then(res => {
+	// 		console.log(res)
+	// 	}).catch(err =>{
+	// 		console.log(err)
+	// 	})
+	// }, [])
+	// console.log(code, Component)
 	return (
 		<>
 			<DocumentHead
@@ -126,26 +151,19 @@ const Post = ({ code, frontmatter, slug }: TProps) => {
 			{/* <ReadingProgress /> */}
 			<div ref={topRef} />
 			<Container>
+				<div>
+
 				<Component
 
-					// @ts-expect-error 
-					components={{
-						// MDXLink,
-						// MDXTitle,
-						// Sparkles,
-						// ChromaHighlight,
-						// HighlightWithUseEffect,
-						// HighlightWithUseInterval,
-
-						// TextGradient: PrimaryGradient,
-						// Heavy,
-						// StyledAccentTextLink,
-						// RoughNotation,
-						CustomBlockquote,
-						LandingImage,
-						...MDXComponents,
-					}}
-				/>
+// @ts-expect-error 
+components={{
+	CustomBlockquote,
+	LandingImage,
+	...MDXComponents,
+}}
+/>
+			</div>
+				<TableOfContents anchors={anchors} />
 			</Container>
 			{/* <EndLinks>
 				<ShareLinks title={frontmatter.title} slug={slug} />
@@ -181,6 +199,32 @@ export async function getStaticPaths() {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 	// @ts-expect-error 
   const result = await getMDXFileData(params?.slug, { cwd: "content/blog" });
+//   const getHeadings = (source:string) => {
+//     const regex = /<h2>(.*?)<\/h2>/g;
+//     if (source.match(regex)) {
+// 		console.log(source)
+// 		// @ts-expect-error 
+//       return source.match(regex).map((heading) => {
+//         const headingText = heading.replace("<h2>", "").replace("</h2>", "");
+
+//         const link = "#" + headingText.replace(/ /g, "_").toLowerCase();
+
+//         return {
+//           text: headingText,
+//           link,
+//         };
+//       });
+//     }
+
+//     return [];
+//   };
+
+//   const headings = getHeadings(result.matter.content);
+//   const file = await remark()
+//     .use(remarkToc)
+//     .process(result.matter.content)
+
+//   console.log(headings)
 
 	return { props: { ...result } };
 };
