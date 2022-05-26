@@ -5,8 +5,7 @@ import styled, { css } from "styled-components";
 
 const CodePreBlockWithHighlight = styled.pre`
 	padding: 20px;
-	margin: 1rem -20px;
-	margin-left: -2.5rem;
+	margin: 1rem 0;
 	border-radius: 5px;
 	overflow-x: auto;
     font-family: 'JetBrains Mono', monospace;

@@ -4,41 +4,43 @@ import { bundleMDX } from "mdx-bundler";
 import { getMDXComponent } from "mdx-bundler/client";
 import { DocumentHead } from "Components/shared/seo";
 import { getBlogPostsSlugs, getMDXFileData } from "@utils/blog";
-import { RoughNotation } from "react-rough-notation";
 import { styled } from "@styles/stitches";
 import { CodeBlock } from "Components/blog/shiki/styled";
 import { CustomImage } from "Components/blog/CustomImage/CustomImage";
-import {LandingImage} from "Components/blog/LandingImage/LandingImage"
-import {CustomBlockquote} from "Components/blog/CustomBlockquote/CustomBlockquote"
+import { LandingImage } from "Components/blog/LandingImage/LandingImage";
+import { CustomBlockquote } from "Components/blog/CustomBlockquote/CustomBlockquote";
 import { supabase } from "@utils/supabaseClient";
-import {remark} from 'remark'
-import remarkToc from 'remark-toc'
+
 import axios from "axios";
 import TableOfContents from "Components/blog/TableOfContents/TableOfContents";
+import { BlogHeadings } from "Components/blog/Typography/Headings";
 
 type TBlogPostFrontmatter = {
-	title: string;
-	seoTitle?: string;
-	subtitle?: string;
-	summary: string;
-	image?: string;
-	published: boolean;
-	publishedAt: string;
-	updatedAt: string;
+  title: string;
+  seoTitle?: string;
+  subtitle?: string;
+  summary: string;
+  image?: string;
+  published: boolean;
+  publishedAt: string;
+  updatedAt: string;
 };
 
 type PostDetails = {
-	id: number;
-	slug: string;
-	inserted_at: string;
-	updated_at: string;
-	view_count: number;
-	likes: number;
+  id: number;
+  slug: string;
+  inserted_at: string;
+  updated_at: string;
+  view_count: number;
+  likes: number;
 };
 
-type TBlogPostPageProps = Omit<Awaited<ReturnType<typeof bundleMDX>>, "frontmatter"> & {
-	frontmatter: TBlogPostFrontmatter;
-	slug: string;
+type TBlogPostPageProps = Omit<
+  Awaited<ReturnType<typeof bundleMDX>>,
+  "frontmatter"
+> & {
+  frontmatter: TBlogPostFrontmatter;
+  slug: string;
 };
 
 // import { getButtondownSubscriberCount } from "@/domains/Buttondown";
@@ -46,130 +48,137 @@ type TBlogPostPageProps = Omit<Awaited<ReturnType<typeof bundleMDX>>, "frontmatt
 // import { MDXLink, MDXTitle } from "@/styles/components";
 // import { Sparkles } from "@/styles/special";
 // import {
-    // 	BlogPostTitle,`
-    // 	Datestamp,
-    // 	PrimaryGradient,
-    // 	Heavy,
-    // 	StyledAccentTextLink,
-    // } from "@/styles/typography";
-    // import { TBlogPostPageProps } from "@/typings/blog";
-    // import { getMDXFileData, getBlogPostsSlugs } from "@/utils/blog";
+// 	BlogPostTitle,`
+// 	Datestamp,
+// 	PrimaryGradient,
+// 	Heavy,
+// 	StyledAccentTextLink,
+// } from "@/styles/typography";
+// import { TBlogPostPageProps } from "@/typings/blog";
+// import { getMDXFileData, getBlogPostsSlugs } from "@/utils/blog";
 type TProps = TBlogPostPageProps;
 
 const Container = styled("div", {
-    maxWidth:"700px",
-    margin:"0 auto",
-	display: "grid",
-	gridTemplateColumns: "3fr 1fr"
-})
-
-// const Paragraph = styled("p", {
-//     fontFam
-// })
+  maxWidth: "70rem",
+  margin: "0 auto",
+  display: "grid",
+  gridTemplateColumns: "3fr 1fr",
+  gap: "40px",
+});
 
 const Heading = styled("h1", {
-    fontSize: "3rem",
-	fontFamily:"$heading"
-})
+  fontSize: "3rem",
+  fontFamily: "$heading",
+});
 
 const Link = styled("a", {
-	color: "$primaryBlue",
-	borderBottom:"2px solid transparent",
-	fontWeight:500,
-	"&:hover":{
-		borderColor: "$primaryBlue"
-	},
-	transition:"border-color 0.3s ease, color 0.3s ease"
-})	
+  color: "$primaryBlue",
+  borderBottom: "2px solid transparent",
+  fontWeight: 500,
+  "&:hover": {
+    borderColor: "$primaryBlue",
+  },
+  transition: "border-color 0.3s ease, color 0.3s ease",
+});
 
 // color="#fff176"
 
 const Paragraph = styled("p", {
-	padding: "10px 0px",
-	fontFamily:"Inter",
-	color:"Black"
-})
-
-
+  padding: "10px 0px",
+  fontFamily: "Inter",
+  color: "#252a2f",
+});
 
 const MDXComponents = {
-	p: Paragraph,
-	h1: Heading,
-	// h2: MDXHeadingWrapper.h2,
-	// h3: MDXHeadingWrapper.h3,
-	pre: CodeBlock,
-	img: CustomImage,
-	a: Link,
+  p: Paragraph,
+  h1: Heading,
+  h2: BlogHeadings("h2"),
+  h3: BlogHeadings("h3"),
+  pre: CodeBlock,
+  img: CustomImage,
+  a: Link,
 
-	// ul: UnorderedList,
-	// ol: OrderedList,
+  // ul: UnorderedList,
+  // ol: OrderedList,
 };
 
 // gotta use https://roughnotation.com/
 
-
 const Post = ({ code, frontmatter, slug, matter }: TProps) => {
-	const topRef = useRef<HTMLDivElement>(null);
-	const Component = useMemo(() => getMDXComponent(code), [code]);
-	const anchors = React.Children.toArray(Component({
-		// @ts-expect-error
-		components : {
-			CustomBlockquote,
-			LandingImage,
-			...MDXComponents,
-		}
-	})?.props.children)
+  const topRef = useRef<HTMLDivElement>(null);
+  const Component = useMemo(() => getMDXComponent(code), [code]);
+  const anchors = React.Children.toArray(
+    Component({
+      // @ts-expect-error
+      components: {
+        CustomBlockquote,
+        LandingImage,
+        ...MDXComponents,
+      },
+    })?.props.children
+  )
     .filter(
       (child: any) =>
-        child.type && ['h2', 'h3'].includes(child.type)
+        child.props?.type && ["h2", "h3"].includes(child.props.type)
     )
     .map((child: any) => ({
-      url: '#' + child.props.id,
+      url: "#" + child.props.id,
       depth:
-        (child.type &&
-          parseInt(child.type.replace('h', ''), 0)) ??
+        (child.props.type && parseInt(child.props.type.replace("h", ""), 0)) ??
         0,
-      text: child.props.children
+      text: child.props.children,
     }));
-	console.log(anchors)
+  console.log(
+    Component({
+      // @ts-expect-error
+      components: {
+        CustomBlockquote,
+        LandingImage,
+        ...MDXComponents,
+      },
+    })
+  );
 
-	// useEffect(() => {
-	// 	axios.get("/api/blogs/get-details-blog", {params: { slug }}).then(res => {
-	// 		console.log(res)
-	// 	}).catch(err =>{
-	// 		console.log(err)
-	// 	})
-	// }, [])
-	// console.log(code, Component)
-	return (
-		<>
-			<DocumentHead
-				title={frontmatter.seoTitle ?? frontmatter.title}
-				imageURL={frontmatter?.image}
-				description={frontmatter.summary}
-			/>
-			{/* <ReadingProgress /> */}
-			<div ref={topRef} />
-			<Container>
-				<div>
-
-				<Component
-
-// @ts-expect-error 
-components={{
-	CustomBlockquote,
-	LandingImage,
-	...MDXComponents,
-}}
-/>
-			</div>
-				<TableOfContents anchors={anchors} />
-			</Container>
-			{/* <EndLinks>
+  // useEffect(() => {
+  // 	axios.get("/api/blogs/get-details-blog", {params: { slug }}).then(res => {
+  // 		console.log(res)
+  // 	}).catch(err =>{
+  // 		console.log(err)
+  // 	})
+  // }, [])
+  // console.log(code, Component)
+  return (
+    <>
+      <DocumentHead
+        title={frontmatter.seoTitle ?? frontmatter.title}
+        imageURL={frontmatter?.image}
+        description={frontmatter.summary}
+      />
+      <div ref={topRef} />
+      <div
+        style={{
+          backgroundColor: "#f7f7f6",
+        }}
+      >
+        <Container>
+          <div>
+            <Component
+              // @ts-expect-error
+              components={{
+                CustomBlockquote,
+                LandingImage,
+                ...MDXComponents,
+              }}
+            />
+          </div>
+          <TableOfContents anchors={anchors} />
+        </Container>
+      </div>
+      {/* <EndLinks>
 				<ShareLinks title={frontmatter.title} slug={slug} />
 				<ScrollToTop topRef={topRef} />
 			</EndLinks> */}
-			{/* <PostMetaDataGrid>
+      {/* <PostMetaDataGrid>
 				<Datestamp>
 					Last updated:{" "}
 					{new Date(frontmatter.updatedAt ?? frontmatter.publishedAt).toLocaleDateString("en-US", {
@@ -180,55 +189,53 @@ components={{
 					{!frontmatter.published && <PostNotPublishedWarning />}
 				</Datestamp>
 			</PostMetaDataGrid> */}
-			{/* <ViewsCounter pageType="post" /> */}
-			{/* <NewsletterSignup {...{ subscriberCount }} /> */}
-		</>
-	);
+      {/* <ViewsCounter pageType="post" /> */}
+      {/* <NewsletterSignup {...{ subscriberCount }} /> */}
+    </>
+  );
 };
 
 export async function getStaticPaths() {
-	const postsSlugs = await getBlogPostsSlugs();
+  const postsSlugs = await getBlogPostsSlugs();
 
-	const paths = postsSlugs.map((slug) => ({
-		params: { slug },
-	}));
+  const paths = postsSlugs.map((slug) => ({
+    params: { slug },
+  }));
 
-	return { paths, fallback: false };
+  return { paths, fallback: false };
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-	// @ts-expect-error 
+  // @ts-expect-error
   const result = await getMDXFileData(params?.slug, { cwd: "content/blog" });
-//   const getHeadings = (source:string) => {
-//     const regex = /<h2>(.*?)<\/h2>/g;
-//     if (source.match(regex)) {
-// 		console.log(source)
-// 		// @ts-expect-error 
-//       return source.match(regex).map((heading) => {
-//         const headingText = heading.replace("<h2>", "").replace("</h2>", "");
+  //   const getHeadings = (source:string) => {
+  //     const regex = /<h2>(.*?)<\/h2>/g;
+  //     if (source.match(regex)) {
+  // 		console.log(source)
+  // 		// @ts-expect-error
+  //       return source.match(regex).map((heading) => {
+  //         const headingText = heading.replace("<h2>", "").replace("</h2>", "");
 
-//         const link = "#" + headingText.replace(/ /g, "_").toLowerCase();
+  //         const link = "#" + headingText.replace(/ /g, "_").toLowerCase();
 
-//         return {
-//           text: headingText,
-//           link,
-//         };
-//       });
-//     }
+  //         return {
+  //           text: headingText,
+  //           link,
+  //         };
+  //       });
+  //     }
 
-//     return [];
-//   };
+  //     return [];
+  //   };
 
-//   const headings = getHeadings(result.matter.content);
-//   const file = await remark()
-//     .use(remarkToc)
-//     .process(result.matter.content)
+  //   const headings = getHeadings(result.matter.content);
+  //   const file = await remark()
+  //     .use(remarkToc)
+  //     .process(result.matter.content)
 
-//   console.log(headings)
+  //   console.log(headings)
 
-	return { props: { ...result } };
+  return { props: { ...result } };
 };
-
-
 
 export default Post;
