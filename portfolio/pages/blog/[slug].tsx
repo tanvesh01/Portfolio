@@ -14,6 +14,7 @@ import { supabase } from "@utils/supabaseClient";
 import axios from "axios";
 import TableOfContents from "Components/blog/TableOfContents/TableOfContents";
 import { BlogHeadings } from "Components/blog/Typography/Headings";
+import BlogHeader from "Components/blog/BlogHeader/BlogHeader";
 
 type TBlogPostFrontmatter = {
   title: string;
@@ -67,7 +68,7 @@ const Container = styled("div", {
 });
 
 const Heading = styled("h1", {
-  fontSize: "3rem",
+  fontSize: "5rem",
   fontFamily: "$heading",
 });
 
@@ -97,7 +98,7 @@ const MDXComponents = {
   pre: CodeBlock,
   img: CustomImage,
   a: Link,
-
+  BlogHeader: BlogHeader,
   // ul: UnorderedList,
   // ol: OrderedList,
 };
@@ -162,6 +163,10 @@ const Post = ({ code, frontmatter, slug, matter }: TProps) => {
       >
         <Container>
           <div>
+            <BlogHeader
+              heading="Cut down CRA build times by 70%"
+              frontmatter={frontmatter}
+            />
             <Component
               // @ts-expect-error
               components={{
