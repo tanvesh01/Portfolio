@@ -141,13 +141,26 @@ const Post = ({ code, frontmatter, slug, matter }: TProps) => {
   );
 
   // useEffect(() => {
-  // 	axios.get("/api/blogs/get-details-blog", {params: { slug }}).then(res => {
-  // 		console.log(res)
-  // 	}).catch(err =>{
-  // 		console.log(err)
-  // 	})
+  // axios.get("/api/blogs/get-details-blog", {params: { slug }}).then(res => {
+  // 	console.log(res)
+  // }).catch(err =>{
+  // 	console.log(err)
+  // })
   // }, [])
   // console.log(code, Component)
+
+  const addLikeToBlog = () => {
+    // https://dribbble.com/shots/10747387-Spread-love-not-viruses
+    axios
+      .post("/api/blogs/add-like-blog", { params: { slug } })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <>
       <DocumentHead
@@ -178,6 +191,7 @@ const Post = ({ code, frontmatter, slug, matter }: TProps) => {
           </div>
           <TableOfContents anchors={anchors} />
         </Container>
+        <button onClick={addLikeToBlog}>Like</button>
       </div>
       {/* <EndLinks>
 				<ShareLinks title={frontmatter.title} slug={slug} />
