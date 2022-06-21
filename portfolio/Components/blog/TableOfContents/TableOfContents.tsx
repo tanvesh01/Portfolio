@@ -1,3 +1,4 @@
+import { lg } from "@styles/breakpoints";
 import { styled } from "@styles/stitches";
 import { useActiveId } from "@utils/hooks/useActiveId";
 import { useRouter } from "next/router";
@@ -56,6 +57,9 @@ const TableOfContents: React.FC<{
 const TOCContainer = styled("div", {
   position: "sticky",
   top: "5rem",
+  [lg]: {
+    display: "none",
+  },
   "& p": {
     fontSize: "1rem",
   },

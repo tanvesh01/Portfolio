@@ -109,9 +109,6 @@ const MainContainer = styled(motion.div, {
     minHeight: "0",
     padding: "8rem 0 0 2rem",
   },
-  "@bp1": {
-    // Styles for bp1
-  },
 });
 
 // AnimatedCharacters

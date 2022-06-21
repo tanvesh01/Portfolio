@@ -15,6 +15,7 @@ import axios from "axios";
 import TableOfContents from "Components/blog/TableOfContents/TableOfContents";
 import { BlogHeadings } from "Components/blog/Typography/Headings";
 import BlogHeader from "Components/blog/BlogHeader/BlogHeader";
+import { lg } from "@styles/breakpoints";
 
 type TBlogPostFrontmatter = {
   title: string;
@@ -60,11 +61,16 @@ type TBlogPostPageProps = Omit<
 type TProps = TBlogPostPageProps;
 
 const Container = styled("div", {
+  $$columnRatio: "3fr 1fr",
   maxWidth: "70rem",
   margin: "0 auto",
   display: "grid",
-  gridTemplateColumns: "3fr 1fr",
+  gridTemplateColumns: "$columnRatio",
   gap: "40px",
+  [lg]: {
+    $$columnRatio: "1fr",
+    padding: "0 2rem",
+  },
 });
 
 const Heading = styled("h1", {
