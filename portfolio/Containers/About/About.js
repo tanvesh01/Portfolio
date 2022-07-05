@@ -9,8 +9,8 @@ function About() {
         <h4 style={{ fontSize: "15px" }}>ABOUT ME</h4>
         <p className={classes.text}>
           Currently a Frontend Engineer at{" "}
-          <a href="https://www.wrky.ai/" target="_blank">
-            Wrky
+          <a href="https://mydukaan.io/" target="_blank">
+            Dukaan
           </a>
           <br />
           On my third year of Computer Science Bachelor and learning new
