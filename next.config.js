@@ -3,20 +3,20 @@ module.exports.redirects = async function () {
         {
             source: "/resume",
             destination:
-                "https://serious-palm-014.notion.site/tanvesh-s-resume-866cbe37f9524232b6e75600f474891d",
+                "https://tanvesh.vercel.app/resume.pdf",
             permanent: true,
         },
         {
             source: "/cv",
             destination:
-                "https://serious-palm-014.notion.site/tanvesh-s-resume-866cbe37f9524232b6e75600f474891d",
+                "https://tanvesh.vercel.app/resume.pdf",
             permanent: true,
         },
         // this is a joke
         {
             source: "/rashi",
             destination:
-                "https://serious-palm-014.notion.site/tanvesh-s-resume-866cbe37f9524232b6e75600f474891d",
+                "https://tanvesh.vercel.app/resume.pdf",
             permanent: true,
         },
     ];
