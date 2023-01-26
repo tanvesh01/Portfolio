@@ -13,7 +13,7 @@ function About() {
             FollowAlice
           </a>
           <br />
-          On my Last year of Computer Science Bachelor and learning new
+          On my Last year of Computer Science Bachelor and <br />learning new
           technologies. <br />
           <span className={classes.love}>
             I build apps with beautiful UI/UX.
