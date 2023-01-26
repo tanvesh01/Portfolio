@@ -9,11 +9,11 @@ function About() {
         <h4 style={{ fontSize: "15px" }}>ABOUT ME</h4>
         <p className={classes.text}>
           Currently a Frontend Engineer at{" "}
-          <a href="https://mydukaan.io/" target="_blank">
-            Dukaan
+          <a href="https://followalice.com/" target="_blank">
+            FollowAlice
           </a>
           <br />
-          On my third year of Computer Science Bachelor and learning new
+          On my Last year of Computer Science Bachelor and learning new
           technologies. <br />
           <span className={classes.love}>
             I build apps with beautiful UI/UX.
